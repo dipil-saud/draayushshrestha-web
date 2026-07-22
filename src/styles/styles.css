@@ -241,6 +241,7 @@ main { padding-block-start: calc(var(--banner-h) + var(--nav-h)); }
 .split__media { min-width: 0; }
 .split__media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
 .split__media--portrait img { aspect-ratio: 4 / 5; object-position: center 20%; }
+.about-intro .split__media img { height: clamp(18rem, 34vw, 30rem); aspect-ratio: auto; }
 .home-practice .split__media img { max-height: 22rem; aspect-ratio: 16 / 9; }
 .fact-list { display: grid; gap: var(--space-sm); }
 .fact-list li { position: relative; padding-inline-start: var(--space-lg); }

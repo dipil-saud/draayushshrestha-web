@@ -1,0 +1,23 @@
+---
+interface Props {
+  plain?: boolean;
+}
+
+const { plain = false } = Astro.props;
+---
+
+<section class:list={["section", { "section--paper-2": !plain }]}>
+  <div class="shell">
+    <div class="section-head section-head--stacked section-head--compact">
+      <h2>Affiliations</h2>
+      <p>Dr. Shrestha is affiliated with Grande International Hospital, Pacific Multispeciality Clinic and Shankhamul Healthcare.</p>
+    </div>
+    <div class="logo-wall logo-wall--large">
+      <ul>
+        <li><a href="https://grandehospital.com/"><img src="assets/images/grande-hospital.png" width="500" height="500" alt="Grande International Hospital"></a></li>
+        <li><a href="https://pacificclinic.com.np/"><img src="assets/images/pacific-clinic.png" width="500" height="500" alt="Pacific Multispeciality Clinic"></a></li>
+        <li><a href="https://shankhamulhealthcare.com.np/"><img src="assets/images/shankhamul-healthcare.png" width="892" height="893" alt="Shankhamul Healthcare"></a></li>
+      </ul>
+    </div>
+  </div>
+</section>
