@@ -267,6 +267,7 @@ main { padding-block-start: calc(var(--banner-h) + var(--nav-h)); }
 .home-treatments li { min-width: 0; padding: var(--space-md); background: var(--color-dark); color: var(--color-rule); }
 .home-treatments .text-link { color: var(--color-focus-on-dark); }
 .quote { display: grid; gap: var(--space-lg); padding-block: var(--space-2xl); }
+.patient-perspective .kicker { font-size: 0.68rem; }
 .quote blockquote { margin: 0; max-width: 34ch; color: var(--color-ink); font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3.25rem); font-style: normal; line-height: 1.15; }
 .quote cite { color: var(--color-muted); font-style: normal; }
 
