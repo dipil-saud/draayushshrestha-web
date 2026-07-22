@@ -1,45 +1,252 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+interface Guide {
+  id: string;
+  category: "Danger signs" | "Health tips" | "Myths and facts";
+  title: string;
+  paragraphs: string[];
+  points: { label?: string; text: string }[];
+  closing?: string;
+}
+
+const guides: Guide[] = [
+  {
+    id: "wound-care",
+    category: "Health tips",
+    title: "Tips on wound care",
+    paragraphs: [
+      "Wound care involves steps to clean, protect and promote healing of a wound. The following are some basic steps for wound care:",
+    ],
+    points: [
+      { label: "Clean the wound", text: "Remove any dirt or debris using saline solution or soap and water." },
+      { label: "Protect the wound", text: "Cover the wound with a sterile bandage to prevent infection." },
+      { label: "Promote healing", text: "Keep the wound moist and covered with a dressing, apply antibiotics if prescribed by a doctor, and keep the wound elevated if possible to reduce swelling." },
+      { label: "Monitor the wound", text: "Observe the wound for signs of infection such as redness, increased pain and discharge." },
+      { label: "Seek medical attention", text: "If the wound is deep, large or shows signs of infection, seek medical attention from a healthcare professional." },
+    ],
+    closing: "The specific wound-care steps may vary depending on the type, severity and location of the wound. Consult a healthcare professional for appropriate wound care.",
+  },
+  {
+    id: "exercises-over-50",
+    category: "Health tips",
+    title: "Best exercises for those over 50",
+    paragraphs: [
+      "Those who are over 50 years of age tend to have degenerative changes in their joints, especially weight-bearing joints. This can lead to osteoarthritis, which manifests as joint pain and stiffness.",
+      "Pain and stiffness often lead to inactivity, which further weakens bones, increases joint stiffness and reduces mobility. The key to having an active life after 50 is to keep moving. Joint loading and range of motion help keep bones and joints healthy.",
+      "Low-impact exercise can improve overall health and fitness while reducing strain on the joints.",
+    ],
+    points: [
+      { label: "Walking", text: "A simple, low-impact exercise for cardiovascular health and overall fitness. Intensity and speed can be varied to suit your fitness level." },
+      { label: "Swimming", text: "A low-impact exercise that can improve cardiovascular health, build muscle and improve flexibility." },
+      { label: "Cycling", text: "A low-impact exercise that can be done indoors on a stationary bike or outdoors." },
+      { label: "Yoga", text: "A way to improve flexibility, balance and overall body strength while reducing stress." },
+      { label: "Water aerobics", text: "A low-impact cardiovascular workout that reduces strain on the joints." },
+    ],
+    closing: "Listen to your body and do not push yourself too hard, especially if you have an existing health condition. Consult your doctor before starting a new exercise programme.",
+  },
+  {
+    id: "healthy-spine",
+    category: "Health tips",
+    title: "Healthy spine tips",
+    paragraphs: [
+      "A healthy spine is the foundation of a healthy musculoskeletal system. Here are some tips to help keep that foundation strong.",
+    ],
+    points: [
+      { label: "Maintain a healthy weight", text: "Excess weight, especially around the midsection, can pull on the back and weaken abdominal muscles." },
+      { label: "Exercise regularly", text: "Regular exercise helps maintain flexibility and strengthens the muscles that support posture." },
+      { label: "Review your workstation", text: "Adjust your chair, desk and screen where possible to support a comfortable, neutral body position." },
+      { label: "Pay attention to injuries", text: "Bumps, falls and accidents can lead to postural adaptations. Address injuries before they develop into bigger problems." },
+      { label: "Choose supportive bedding", text: "A medium-firm mattress can support the spine. A mattress that is too firm may place unwanted pressure on the hips and shoulders when side-sleeping." },
+      { label: "See a doctor", text: "A professional assessment can help identify and address problems caused by everyday wear and tear." },
+    ],
+  },
+  {
+    id: "spine-surgery-myths",
+    category: "Myths and facts",
+    title: "Spine surgery: myths and facts",
+    paragraphs: [
+      "A non-surgical option often seems favourable because surgery has complications that people fear. However, spine surgery has advanced significantly in recent decades. Some conditions require surgery and can cause further harm if surgery is avoided.",
+    ],
+    points: [
+      { label: "Myth", text: "Spine surgery is always invasive and involves a long recovery period." },
+      { label: "Fact", text: "Depending on the operation and the individual patient, spine surgery can be minimally invasive, with smaller incisions and quicker recovery." },
+      { label: "Myth", text: "Spine surgery is only recommended as a last resort." },
+      { label: "Fact", text: "It may be recommended earlier when conservative treatment does not relieve pain or restore function." },
+      { label: "Myth", text: "All spine surgeries have a high risk of complications." },
+      { label: "Fact", text: "Risk depends on the procedure, the patient’s condition and the surgeon’s experience. Physical therapy and rehabilitation are important parts of recovery." },
+    ],
+  },
+  {
+    id: "healthy-knees",
+    category: "Health tips",
+    title: "Tips to maintain healthy knees",
+    paragraphs: [
+      "The knee joints are highly mobile, weight-bearing joints and are therefore prone to injury.",
+      "There are several things you can do to help maintain the health and function of your knees:",
+    ],
+    points: [
+      { label: "Maintain a healthy weight", text: "Extra weight puts additional stress on the knees and can increase wear, tear and injury risk." },
+      { label: "Exercise regularly", text: "Physical activity strengthens the muscles around the knees and improves range of motion. Swimming and cycling are low-impact options." },
+      { label: "Wear proper shoes", text: "Choose shoes with support, cushioning, a low heel and good arch support." },
+      { label: "Stretch", text: "Stretching before and after exercise can improve flexibility and reduce injury risk." },
+      { label: "Take breaks", text: "If work or a hobby involves prolonged kneeling or squatting, take breaks to stand and stretch." },
+      { label: "Use good posture", text: "Stand straight with your feet approximately shoulder-width apart." },
+      { label: "Avoid excessive strain", text: "Avoid high-impact activity if you have knee pain or are prone to knee injuries." },
+      { label: "Lift correctly", text: "Bend your knees and keep heavy objects close to your body." },
+    ],
+    closing: "Consult a healthcare professional if knee pain persists or you experience other knee problems.",
+  },
+  {
+    id: "workout-pain",
+    category: "Danger signs",
+    title: "Tips to prevent pain after workouts and sports",
+    paragraphs: [
+      "Delayed onset muscle soreness, or DOMS, is stiffness and pain that can develop a day or two after physical activity, particularly when the activity is new or uses an unfamiliar muscle group. It is associated with small muscle-fibre tears caused by increased strain.",
+      "Symptoms can include stiffness, tenderness, swelling, reduced range of motion and reduced strength. Soreness is often greatest 24 to 48 hours after activity and can last up to a week.",
+    ],
+    points: [
+      { label: "Stay hydrated", text: "Drink water during recovery." },
+      { label: "Apply heat or cold", text: "Heat or cold may help reduce soreness." },
+      { label: "Massage gently", text: "Gentle massage can reduce stiffness and improve circulation." },
+      { label: "Stretch", text: "Stretching can help improve flexibility." },
+      { label: "Rest", text: "Allow time for the muscles to recover." },
+    ],
+    closing: "Consult a healthcare professional if muscle soreness is severe, persistent or accompanied by other concerning symptoms.",
+  },
+  {
+    id: "healthy-neck",
+    category: "Health tips",
+    title: "Tips to maintain a healthy cervical spine and neck",
+    paragraphs: [
+      "Problems with the cervical spine mainly cause pain in the back of the neck and shoulder-blade region. Pain can sometimes radiate to the upper limbs when cervical nerves are compressed.",
+    ],
+    points: [
+      { label: "Exercise regularly", text: "Physical activity can strengthen the muscles supporting the cervical spine and improve flexibility and range of motion." },
+      { label: "Use good posture", text: "Keep your head and neck neutral, with your ears aligned with your shoulders and your chin level." },
+      { label: "Avoid excessive strain", text: "Avoid twisting or bending the neck in unnatural ways." },
+      { label: "Take breaks", text: "Move and stretch when sitting or standing in one position for long periods." },
+      { label: "Use a supportive pillow", text: "A comfortable pillow can reduce neck strain and improve sleep quality." },
+      { label: "Raise phones and tablets", text: "Avoid holding devices at a low angle for long periods." },
+    ],
+    closing: "Consult a healthcare professional if neck pain persists or you experience other cervical-spine problems.",
+  },
+  {
+    id: "surgical-wound",
+    category: "Health tips",
+    title: "How to take care of a surgical wound",
+    paragraphs: [
+      "Many patients are unsure how to care for a surgical wound or recognise possible infection. These steps can support wound healing.",
+    ],
+    points: [
+      { label: "Keep the wound clean", text: "Clean it with soap and water, or as instructed by your doctor. Avoid soaking the wound." },
+      { label: "Change dressings regularly", text: "Change the dressing as instructed. A dirty or moist dressing can increase infection risk." },
+      { label: "Avoid excessive movement", text: "Activities that stress the surgical site can reopen the wound and slow healing." },
+      { label: "Take prescribed medicines", text: "Take antibiotics or pain medicine as directed." },
+      { label: "Avoid smoking", text: "Smoking can delay healing and increase complication risk." },
+      { label: "Eat a balanced diet", text: "Adequate protein, vitamins and minerals support healing." },
+      { label: "Watch for infection", text: "Increased pain, redness, swelling and discharge can indicate infection." },
+      { label: "Follow up", text: "See your doctor as instructed and raise any concerns." },
+      { label: "Avoid unprescribed creams", text: "Do not apply creams or ointments unless instructed by your doctor." },
+    ],
+  },
+  {
+    id: "neck-pain-myths",
+    category: "Myths and facts",
+    title: "Neck pain: myths and facts",
+    paragraphs: ["There are several common myths about neck pain:"],
+    points: [
+      { label: "Myth", text: "Neck pain is always caused by poor posture." },
+      { label: "Fact", text: "Poor posture can contribute, but injury, disease and genetics can also play a role." },
+      { label: "Myth", text: "You should always rest your neck if it hurts." },
+      { label: "Fact", text: "Rest can help in some cases, but staying active and maintaining range of motion can also reduce pain." },
+      { label: "Myth", text: "Chiropractic care is the only effective treatment." },
+      { label: "Fact", text: "Physical therapy, medication or surgery may be recommended depending on the individual circumstances." },
+      { label: "Myth", text: "Neck pain is always a serious problem." },
+      { label: "Fact", text: "Some cases are serious, while others improve with self-care." },
+    ],
+    closing: "Consult a specialist if neck pain is persistent or severe.",
+  },
+  {
+    id: "disc-herniation",
+    category: "Myths and facts",
+    title: "Disc herniation",
+    paragraphs: [
+      "Disc herniation can affect people from young adulthood to older age. There are several common myths about the condition.",
+    ],
+    points: [
+      { label: "Myth", text: "Disc herniations only occur in older people." },
+      { label: "Fact", text: "They become more common with age but can occur at any age." },
+      { label: "Myth", text: "Disc herniations always require surgery." },
+      { label: "Fact", text: "Some cases need surgery, while many improve with physical therapy, medication and other non-surgical measures." },
+      { label: "Myth", text: "Disc herniations only cause back pain." },
+      { label: "Fact", text: "They can also cause pain, numbness or weakness in the legs or arms." },
+      { label: "Myth", text: "Disc herniations are always caused by injury or trauma." },
+      { label: "Fact", text: "Trauma can be a cause, but posture, obesity and genetics can also contribute." },
+    ],
+    closing: "Treatment depends on the individual circumstances. Consult a healthcare professional for diagnosis and a treatment plan.",
+  },
+  {
+    id: "back-pain",
+    category: "Health tips",
+    title: "Back pain tips",
+    paragraphs: [
+      "Back pain is a common problem that can reduce quality of life and interfere with work and activity.",
+    ],
+    points: [
+      { label: "Practise good posture", text: "Stand straight and avoid slouching. When sitting, use a chair that supports the natural curves of the spine." },
+      { label: "Exercise regularly", text: "Activity helps keep the spine strong and flexible. Yoga, swimming and cycling are lower-impact options." },
+      { label: "Maintain a healthy weight", text: "Excess weight increases stress on the spine. A balanced diet and regular activity can help." },
+    ],
+  },
+  {
+    id: "nerve-compression",
+    category: "Danger signs",
+    title: "Signs of nerve compression in the neck",
+    paragraphs: [
+      "Neck pain is often related to posture or muscle strain, but an underlying condition can sometimes cause localised pain or pain that radiates into the arms and hands.",
+      "Signs and symptoms can include:",
+    ],
+    points: [
+      { text: "Sharp, burning or shooting pain in the neck, shoulder, arm or hand." },
+      { text: "Numbness or tingling in the neck, shoulder, arm or hand." },
+      { text: "Weakness in the arm, hand or fingers." },
+      { text: "Difficulty with fine motor skills such as buttoning clothes or writing." },
+      { text: "Loss of sensation or weakness in a leg or foot when compression is severe." },
+      { text: "Headaches at the back of the head or base of the skull." },
+      { text: "Dizziness or vertigo." },
+      { text: "Loss of bladder or bowel control when compression is severe." },
+    ],
+    closing: "See a doctor promptly if you experience these symptoms. Nerve compression can have several causes, and early treatment can help prevent further damage.",
+  },
+];
 ---
 
 <BaseLayout
   title="Orthopaedic Patient Guides | Dr. Aayush Shrestha"
-  description="Read practical patient guides on back pain, neck pain, knee health, wound care, disc herniation and spine surgery from an orthopaedic surgeon in Nepal."
+  description="Read Dr. Aayush Shrestha’s patient education on wound care, exercise, spine and knee health, neck pain, disc herniation and warning signs."
   canonical="https://draayushshrestha.com/patient-guides.html"
   active="patient-guides"
 >
   <main id="main">
-    <section class="shell page-hero guides-hero"><p class="kicker">Patient education</p><h1>Know your body. Ask better questions.</h1><p>Start with symptoms, understand the language used in clinic and know which changes should not wait.</p></section>
-    <div class="body-guides">
-      <section class="body-guide" id="spine-guide"><div class="shell"><div class="body-guide__lead"><div class="body-guide__copy"><p class="kicker">Back &amp; spine</p><h2>Spine</h2><p>Spinal conditions may be managed with non-surgical or surgical care depending on the diagnosis, symptoms and examination. The aim is to reduce pain, improve function and support a safe return to activity.</p></div><figure><img src="assets/images/neck-nerve-pain.jpeg" width="1440" height="1080" alt="Illustration of cervical nerve pain"></figure></div><details class="condition-disclosure"><summary>Show all spine conditions</summary><dl class="condition-definitions">
-        <div><dt>Herniated disc</dt><dd>The soft centre of a spinal disc pushes through a crack in its tougher outer casing, causing pain, numbness or weakness in an arm or leg.</dd></div><div><dt>Degenerative disc disease</dt><dd>Wear and tear of spinal discs over time, leading to pain, stiffness and reduced flexibility.</dd></div><div><dt>Spinal stenosis</dt><dd>Narrowing of the spinal canal that can compress nerves and cause pain, numbness or weakness in the arms or legs.</dd></div><div><dt>Scoliosis</dt><dd>Abnormal spinal curvature that can produce uneven shoulders, hips or waist and may cause back pain or difficulty breathing.</dd></div><div><dt>Spondylolisthesis</dt><dd>A vertebra slips out of place, often because of a stress fracture, causing lower-back pain and sometimes leg pain or weakness.</dd></div><div><dt>Spinal fractures</dt><dd>Breaks or cracks in spinal bones resulting from trauma, osteoporosis or other conditions, with pain and possible nerve damage.</dd></div><div><dt>Sciatica</dt><dd>Compression or irritation of the sciatic nerve, causing pain that radiates from the lower back through the buttock and into the leg.</dd></div><div><dt>Spinal tumours</dt><dd>Abnormal growths in or near the spinal cord that can cause pain, weakness, numbness or bowel or bladder changes.</dd></div><div><dt>Facet joint syndrome</dt><dd>Degeneration or inflammation of the spine’s facet joints, leading to stiffness, pain and reduced range of motion.</dd></div><div><dt>Radiculopathy</dt><dd>Compression or irritation of a spinal nerve root, causing pain, numbness, tingling or weakness along the nerve’s pathway.</dd></div>
-      </dl></details></div></section>
-      <section class="body-guide body-guide--tinted" id="shoulder-guide"><div class="shell"><div class="body-guide__lead body-guide__lead--reverse"><div class="body-guide__copy"><p class="kicker">Upper limb</p><h2>Shoulder</h2><p>Shoulder pain needs professional assessment. Treatment may involve pain relief, physical therapy, rest or surgery, with the plan selected for the underlying cause and severity.</p></div><figure><img src="assets/images/shoulder-pain.png" width="359" height="381" loading="lazy" alt="People exercising their shoulders"></figure></div><details class="condition-disclosure"><summary>Show all shoulder conditions</summary><dl class="condition-definitions">
-        <div><dt>Rotator cuff tears</dt><dd>Tears in rotator-cuff tendons caused by overuse, trauma or degeneration, resulting in pain, weakness and limited shoulder mobility.</dd></div><div><dt>Shoulder impingement syndrome</dt><dd>Compression of shoulder tendons and bursa, often from repetitive overhead movement or structural abnormalities, causing pain, inflammation and reduced motion.</dd></div><div><dt>Frozen shoulder</dt><dd>Thickening and tightening of the shoulder capsule and surrounding tissues, producing stiffness, pain and difficulty with daily activities.</dd></div><div><dt>Shoulder dislocation</dt><dd>Displacement of the upper-arm bone from the shoulder socket, usually from trauma or repetitive stress, causing severe pain and instability.</dd></div><div><dt>Shoulder instability</dt><dd>Excessive looseness in the shoulder joint that produces recurrent complete or partial dislocations, often because of ligament or labral tears.</dd></div><div><dt>Labral tears</dt><dd>Tears in the cartilage surrounding the shoulder socket, resulting in pain, instability and limited function.</dd></div><div><dt>Bursitis</dt><dd>Inflammation of fluid-filled bursae that cushion the joint, causing pain, swelling and limited mobility.</dd></div><div><dt>AC joint injuries</dt><dd>Sprains, separations or arthritis at the joint between the acromion and clavicle, causing pain, swelling and difficulty with overhead movement.</dd></div><div><dt>Shoulder arthritis</dt><dd>Degenerative or inflammatory joint changes resulting in pain, stiffness and reduced motion.</dd></div><div><dt>Biceps tendon disorders</dt><dd>Tendinitis, tendinosis or tears involving the long head of the biceps tendon, causing pain, weakness and limited overhead function.</dd></div>
-      </dl></details></div></section>
-      <section class="body-guide" id="knee-guide"><div class="shell"><div class="body-guide__lead"><div class="body-guide__copy"><p class="kicker">Joint health</p><h2>Knee</h2><p>Knee pain may be treated with physical therapy, injections, bracing or surgery. Care should be matched to the condition, activity needs and examination findings.</p></div><figure><img src="assets/images/knee-osteoarthritis.png" width="619" height="412" loading="lazy" alt="Illustration of osteoarthritis in the knee"></figure></div><details class="condition-disclosure"><summary>Show all knee conditions</summary><dl class="condition-definitions">
-        <div><dt>ACL injury</dt><dd>ACL tears or sprains, often from sport or sudden twisting, causing instability, swelling and pain and sometimes requiring reconstruction.</dd></div><div><dt>Meniscus tears</dt><dd>Tears in the cartilage pads cushioning the knee, generally caused by twisting or direct trauma, producing pain, swelling, stiffness and possible locking.</dd></div><div><dt>Patellar dislocation or subluxation</dt><dd>Complete or partial displacement of the kneecap from the femoral groove, causing pain, swelling and instability.</dd></div><div><dt>Patellar tendinitis</dt><dd>Irritation of the tendon connecting the kneecap to the tibia, often from repetitive jumping or overuse, causing front-of-knee pain and stiffness.</dd></div><div><dt>Patellofemoral pain syndrome</dt><dd>Pain around or behind the kneecap during knee-bending activities, associated with abnormal kneecap tracking or alignment.</dd></div><div><dt>Osteoarthritis</dt><dd>Degeneration of knee cartilage through wear and tear, causing pain, stiffness, swelling and reduced mobility.</dd></div><div><dt>Rheumatoid arthritis</dt><dd>Autoimmune inflammatory arthritis of the knee, producing pain, swelling, stiffness and possible joint deformity.</dd></div><div><dt>Iliotibial band syndrome</dt><dd>Irritation of the tissue band along the outside of the thigh, usually from repetitive motion, causing outer-knee pain during running or cycling.</dd></div><div><dt>PCL injury</dt><dd>PCL tears or sprains from front-of-knee impact or hyperextension, causing posterior pain, swelling and instability.</dd></div><div><dt>Knee fractures</dt><dd>Fractures of the femur, tibia or patella around the knee, causing pain, swelling, bruising and difficulty bearing weight.</dd></div>
-      </dl></details></div></section>
-      <section class="body-guide body-guide--tinted" id="foot-ankle-guide"><div class="shell"><div class="body-guide__lead body-guide__lead--reverse"><div class="body-guide__copy"><p class="kicker">Lower limb</p><h2>Foot &amp; ankle</h2><p>Foot and ankle pain can stem from injury, a medical condition or overuse. Treatment may include rest, physical therapy, medication or surgery depending on the cause and severity.</p></div><figure><img src="assets/images/foot-ankle.jpg" width="617" height="349" loading="lazy" alt="Person holding a painful foot after exercise"></figure></div><details class="condition-disclosure"><summary>Show all foot and ankle conditions</summary><dl class="condition-definitions">
-        <div><dt>Ankle sprains</dt><dd>Stretching or tearing of ankle-supporting ligaments, often from a sudden twist, causing pain, swelling and instability.</dd></div><div><dt>Plantar fasciitis</dt><dd>Inflammation of the tissue band along the bottom of the foot, typically causing heel pain with first morning steps or after rest.</dd></div><div><dt>Achilles tendinitis</dt><dd>Inflammation of the Achilles tendon connecting the calf muscles to the heel, causing pain and stiffness along the back of the leg and heel.</dd></div><div><dt>Bunions</dt><dd>Bony bumps at the base of the big toe associated with footwear, genetics or structural deformity, causing pain and difficulty wearing shoes.</dd></div><div><dt>Ingrown toenails</dt><dd>A toenail edge grows into surrounding skin, causing pain, redness, swelling and sometimes infection.</dd></div><div><dt>Metatarsalgia</dt><dd>Pain and inflammation in the ball of the foot caused by overuse, footwear or structural abnormalities, sometimes with numbness or burning.</dd></div><div><dt>Hammer toe</dt><dd>Abnormal bending of a toe, causing pain, corns, calluses and difficulty fitting shoes.</dd></div><div><dt>Flat feet</dt><dd>Collapse of the foot’s arch, producing inward rolling and potentially causing pain, fatigue or impaired balance.</dd></div><div><dt>High arches</dt><dd>An abnormally high arch that places excess pressure on the heel and forefoot, increasing pain and instability.</dd></div><div><dt>Tarsal tunnel syndrome</dt><dd>Compression of the tibial nerve inside the ankle, causing pain, numbness, tingling or weakness in the foot and toes.</dd></div>
-      </dl></details></div></section>
-      <section class="body-guide" id="elbow-guide"><div class="shell"><div class="body-guide__lead"><div class="body-guide__copy"><p class="kicker">Upper limb</p><h2>Elbow</h2><p>Elbow pain can result from overuse, trauma, arthritis or tendinitis. Treatment may include rest, physical therapy, medication or surgery.</p></div><figure><img src="assets/images/elbow.jpg" width="1183" height="887" loading="lazy" alt="Person supporting a painful elbow"></figure></div><details class="condition-disclosure"><summary>Show all elbow conditions</summary><dl class="condition-definitions">
-        <div><dt>Tennis elbow</dt><dd>Inflammation or degeneration of tendons outside the elbow, usually from repetitive wrist and forearm movement, causing pain and tenderness.</dd></div><div><dt>Golfer’s elbow</dt><dd>Inflammation or degeneration of tendons inside the elbow, usually from repetitive gripping and swinging.</dd></div><div><dt>Elbow bursitis</dt><dd>Inflammation of fluid-filled bursae around the elbow, often from repetitive pressure or trauma, causing pain and swelling.</dd></div><div><dt>Olecranon fracture</dt><dd>Fracture of the bony prominence at the back of the elbow, usually from a direct blow or fall.</dd></div><div><dt>Elbow dislocation</dt><dd>Displacement of bones forming the elbow joint, typically after trauma or a fall, causing severe pain and deformity.</dd></div><div><dt>Radial head fracture</dt><dd>Fracture of the upper radius near the elbow, often after a fall on an outstretched hand.</dd></div><div><dt>Olecranon bursitis</dt><dd>Inflammation of the bursa over the olecranon, causing pain, swelling and a visible lump at the back of the elbow.</dd></div><div><dt>Elbow arthritis</dt><dd>Degenerative or inflammatory joint changes causing pain, stiffness, swelling and reduced motion.</dd></div><div><dt>Ulnar nerve entrapment</dt><dd>Compression of the ulnar nerve in the cubital tunnel, causing pain, numbness, tingling or weakness in the forearm and hand.</dd></div><div><dt>Elbow tendon ruptures</dt><dd>Tears of biceps, triceps or other tendons around the elbow, causing pain, weakness and impaired function.</dd></div>
-      </dl></details></div></section>
-      <section class="body-guide body-guide--tinted" id="hip-guide"><div class="shell"><div class="body-guide__lead body-guide__lead--reverse"><div class="body-guide__copy"><p class="kicker">Joint health</p><h2>Hip</h2><p>Hip pain has many causes, including arthritis, bursitis, tendinitis, fractures, impingement and labral injury. Assessment helps identify the underlying cause.</p></div><figure><img src="assets/images/hip-pain.jpg" width="268" height="188" loading="lazy" alt="Person holding a painful hip"></figure></div><details class="condition-disclosure"><summary>Show all hip conditions</summary><dl class="condition-definitions">
-        <div><dt>Hip osteoarthritis</dt><dd>Breakdown of cartilage in the hip joint, causing pain, stiffness, swelling and reduced motion during weight-bearing activity.</dd></div><div><dt>Hip fractures</dt><dd>Breaks in hip bones, often from falls, trauma or osteoporosis, causing severe pain and inability to bear weight.</dd></div><div><dt>Hip bursitis</dt><dd>Inflammation of the sacs cushioning the hip, usually from overuse, trauma or prolonged pressure, causing outer-hip pain.</dd></div><div><dt>Hip labral tears</dt><dd>Tears in the cartilage ring lining the socket, causing pain, clicking or catching and reduced mobility.</dd></div><div><dt>Femoroacetabular impingement</dt><dd>Abnormal contact between the femoral head and socket, causing pain, stiffness and reduced movement.</dd></div><div><dt>Hip dysplasia</dt><dd>Abnormal hip-joint development that causes instability and increases the risk of dislocation or osteoarthritis.</dd></div><div><dt>Avascular necrosis</dt><dd>Death of hip bone tissue from poor blood supply, eventually causing pain, stiffness and joint-surface collapse.</dd></div><div><dt>Hip tendinitis</dt><dd>Irritation of tendons around the hip from overuse or a sudden activity increase, causing pain and weakness.</dd></div><div><dt>Hip dislocation</dt><dd>Displacement of the femoral head from the socket after trauma, causing severe pain and inability to move the joint.</dd></div><div><dt>Snapping hip syndrome</dt><dd>Audible or palpable snapping during hip movement, usually from muscles or tendons rubbing over bone.</dd></div>
-      </dl></details></div></section>
-      <section class="body-guide" id="hand-wrist-guide"><div class="shell"><div class="body-guide__lead"><div class="body-guide__copy"><p class="kicker">Upper limb</p><h2>Hand &amp; wrist</h2><p>Repetitive use, arthritis, injury, tendinitis, posture and health conditions such as diabetes can contribute to hand and wrist symptoms.</p></div><figure><img src="assets/images/hand-wrist.png" width="744" height="516" loading="lazy" alt="Illustration of weakness and pain in the hand"></figure></div><details class="condition-disclosure"><summary>Show all hand and wrist conditions</summary><dl class="condition-definitions">
-        <div><dt>Carpal tunnel syndrome</dt><dd>Compression of the median nerve at the wrist, causing pain, numbness, tingling and weakness in the thumb and adjacent fingers.</dd></div><div><dt>Trigger finger</dt><dd>Inflammation or thickening of a finger’s tendon sheath, causing the finger to catch or lock in a bent position.</dd></div><div><dt>De Quervain’s tenosynovitis</dt><dd>Inflammation of tendons at the base of the thumb, causing pain, swelling and difficulty gripping.</dd></div><div><dt>Ganglion cysts</dt><dd>Noncancerous fluid-filled lumps along tendons or joints that can cause pain and restricted movement.</dd></div><div><dt>Dupuytren’s contracture</dt><dd>Progressive thickening beneath the palm that forms cords and pulls fingers into a bent position.</dd></div><div><dt>Wrist sprains</dt><dd>Stretching or tearing of wrist ligaments, often from falls or sudden twisting.</dd></div><div><dt>Fractures</dt><dd>Breaks in hand or wrist bones from trauma, falls or repetitive stress, causing pain, swelling and sometimes deformity.</dd></div><div><dt>Arthritis</dt><dd>Degenerative or inflammatory joint disease causing pain, stiffness, swelling and reduced motion.</dd></div><div><dt>Tendinitis or tendinosis</dt><dd>Inflammation or degeneration of hand or wrist tendons caused by overuse, repetitive movement or injury.</dd></div><div><dt>Cubital tunnel syndrome</dt><dd>Compression of the ulnar nerve at the elbow, causing symptoms in the hand, particularly the ring and little fingers.</dd></div>
-      </dl></details></div></section>
-      <section class="body-guide body-guide--tinted" id="rheumatic-guide"><div class="shell"><div class="body-guide__lead body-guide__lead--reverse"><div class="body-guide__copy"><p class="kicker">Systemic conditions</p><h2>Rheumatic conditions</h2><p>Rheumatic diseases can cause joint and muscle pain, swelling, stiffness and systemic symptoms. Treatment varies and may involve medication, therapy or surgery.</p></div><figure><img src="assets/images/rheumatic-conditions.jpg" width="1254" height="836" loading="lazy" alt="Person experiencing inflammatory joint pain"></figure></div><details class="condition-disclosure"><summary>Show all rheumatic conditions</summary><dl class="condition-definitions">
-        <div><dt>Rheumatoid arthritis</dt><dd>Chronic autoimmune disease causing joint inflammation, pain, swelling and stiffness.</dd></div><div><dt>Ankylosing spondylitis</dt><dd>Inflammatory arthritis primarily affecting the spine, causing stiffness, pain and reduced mobility.</dd></div><div><dt>Psoriatic arthritis</dt><dd>Arthritis occurring in some people with psoriasis, producing joint inflammation plus skin and nail changes.</dd></div><div><dt>Systemic lupus erythematosus</dt><dd>Autoimmune disease affecting multiple organs and joints, often with rashes, fatigue and systemic symptoms.</dd></div><div><dt>Gout</dt><dd>Arthritis caused by uric-acid crystals, producing sudden severe joint pain, redness, swelling and warmth.</dd></div><div><dt>Juvenile idiopathic arthritis</dt><dd>A group of inflammatory joint disorders arising before age 16, causing pain, stiffness and reduced mobility.</dd></div><div><dt>Fibromyalgia</dt><dd>Chronic widespread musculoskeletal pain with fatigue, sleep disturbance and tender areas.</dd></div><div><dt>Sjögren’s syndrome</dt><dd>Autoimmune disease causing dry eyes and mouth and potentially joint pain, inflammation and fatigue.</dd></div><div><dt>Polymyalgia rheumatica</dt><dd>Inflammatory condition causing shoulder, neck, hip and thigh pain and stiffness, generally in older adults.</dd></div><div><dt>Temporal arteritis</dt><dd>Arterial inflammation causing headache, scalp tenderness, jaw pain and vision changes, requiring prompt medical care.</dd></div>
-      </dl></details></div></section>
-      <section class="body-guide" id="trauma-guide"><div class="shell"><div class="body-guide__lead"><div class="body-guide__copy"><p class="kicker">Urgent care</p><h2>Trauma</h2><p>Orthopaedic trauma care provides prompt evaluation and treatment after physical injury, aiming to prevent long-term complications and restore function.</p></div><figure><img src="assets/images/trauma.png" width="512" height="512" loading="lazy" alt="Illustration representing orthopaedic trauma care"></figure></div><details class="condition-disclosure"><summary>Show all trauma conditions</summary><dl class="condition-definitions">
-        <div><dt>Fractures</dt><dd>Breaks or cracks in bones caused by falls, sports injuries, accidents or other trauma.</dd></div><div><dt>Dislocations</dt><dd>Joint injuries in which bones are forced out of their normal positions, causing severe pain and loss of function.</dd></div><div><dt>Sprains and strains</dt><dd>Overstretching or tearing of ligaments, muscles or tendons during sport or sudden movement.</dd></div><div><dt>Soft-tissue injuries</dt><dd>Damage around bones, including bruises, contusions, lacerations and abrasions.</dd></div><div><dt>Traumatic amputations</dt><dd>Severe injuries causing partial or complete limb loss and requiring immediate specialist care.</dd></div><div><dt>Crush injuries</dt><dd>Damage from substantial force or pressure, potentially causing tissue injury, compartment syndrome and loss of function.</dd></div><div><dt>Open wounds</dt><dd>Injuries that break the skin and expose deeper tissues, increasing infection risk and requiring prompt care.</dd></div><div><dt>Polytrauma</dt><dd>Multiple severe injuries across different body regions, often requiring multidisciplinary management and rehabilitation.</dd></div><div><dt>Traumatic joint injuries</dt><dd>Ligament, meniscus, cartilage or other joint injuries that may require surgical stabilisation or repair.</dd></div><div><dt>Complications of trauma</dt><dd>Nerve damage, vascular injury, compartment syndrome or post-traumatic arthritis requiring specialised treatment.</dd></div>
-      </dl></details></div></section>
-    </div>
-    <section class="section"><div class="narrow"><div class="medical-note"><strong>Medical information notice</strong><p>These guides are educational and do not provide a diagnosis or individual treatment plan. Advice may differ after surgery or for people with other health conditions. Seek urgent care for severe or rapidly worsening symptoms.</p></div></div></section>
-    <section class="section section--dark"><div class="shell cta-band"><h2>A guide can inform. An examination can diagnose.</h2><div><p>Bring prior reports and imaging to your appointment.</p><p class="action-block"><a class="btn btn--light" href="contact.html">Book appointment</a></p></div></div></section>
+    <section class="shell page-hero guides-hero"><p class="kicker">Patient education</p><h1>Know your body</h1><p>Health tips, danger signs, and myths and facts about common orthopaedic and spine concerns.</p></section>
+    <section class="section section--tight"><div class="shell guide-library">
+      {guides.map((guide) => (
+        <article class="guide-post" id={guide.id}>
+          <header><p class="kicker">{guide.category}</p><h2>{guide.title}</h2><p>April 23, 2024</p></header>
+          <details class="condition-disclosure">
+            <summary>Read article</summary>
+            <div class="guide-post__body">
+              {guide.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+              {guide.points.length > 0 && <ul>{guide.points.map((point) => <li>{point.label && <strong>{point.label}: </strong>}{point.text}</li>)}</ul>}
+              {guide.closing && <p>{guide.closing}</p>}
+              <p class="guide-post__byline">Dr. Aayush Shrestha<br />Orthopaedic and Spine Surgeon</p>
+            </div>
+          </details>
+        </article>
+      ))}
+    </div></section>
+    <section class="section"><div class="narrow"><div class="medical-note"><strong>Medical information notice</strong><p>These articles provide general education and do not replace an individual diagnosis or treatment plan. Seek medical attention for severe or rapidly worsening symptoms.</p></div></div></section>
+    <section class="section section--dark"><div class="shell cta-band"><h2>Get in touch</h2><div><p>Message us to book an appointment.</p><p class="action-block"><a class="btn btn--light" href="contact.html">Contact us</a></p></div></div></section>
   </main>
 </BaseLayout>
