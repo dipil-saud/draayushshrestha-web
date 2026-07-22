@@ -306,17 +306,19 @@ main { padding-block-start: calc(var(--banner-h) + var(--nav-h)); }
 .breadcrumbs { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-xs); color: var(--color-muted); font-size: var(--text-sm); }
 .patient-article__description { max-width: 48rem; font-size: var(--text-md); }
 .patient-article__meta { display: flex; flex-wrap: wrap; gap: var(--space-sm) var(--space-xl); color: var(--color-muted); font-size: var(--text-sm); }
-.patient-article__image { width: min(100% - 2rem, 64rem); margin-inline: auto; overflow: clip; border: var(--rule-width) solid var(--color-rule); }
+.patient-article__image { width: min(100% - 2rem, 52rem); margin-inline: auto; overflow: clip; border: var(--rule-width) solid var(--color-rule); }
 .patient-article__image img { width: 100%; max-height: 34rem; aspect-ratio: 16 / 9; object-fit: cover; }
 .patient-article__layout { display: grid; gap: var(--space-2xl); padding-block: var(--space-2xl) var(--space-3xl); }
 .patient-article__body { display: grid; gap: var(--space-lg); color: var(--color-body); font-size: 1.1rem; }
 .patient-article__body ul { display: grid; border-block-start: var(--rule-width) solid var(--color-rule); }
 .patient-article__body li { padding-block: var(--space-md); border-block-end: var(--rule-width) solid var(--color-rule); }
-.patient-article__notice { margin: 0; }
+.patient-article__notice { margin: 0; padding-inline-start: var(--space-md); border-inline-start: var(--rule-width) solid var(--color-rule); color: var(--color-muted); font-size: var(--text-sm); }
 .patient-article__references { display: grid; gap: var(--space-lg); padding-block-start: var(--space-xl); border-block-start: var(--rule-width) solid var(--color-rule); }
 .patient-article__references h2, .patient-article__related h2 { font-size: var(--text-xl); }
 .patient-article__references ol { display: grid; gap: var(--space-sm); padding-inline-start: var(--space-lg); }
 .patient-article__references li { display: list-item; list-style: decimal; padding-inline-start: var(--space-xs); }
+.patient-article__references li a, .patient-article__references li span { display: block; }
+.patient-article__references li span { margin-block-start: var(--space-xs); }
 .patient-article__references li::marker { color: var(--color-accent-dark); }
 .patient-article__references li span, .patient-article__references > p { color: var(--color-muted); font-size: var(--text-sm); }
 .patient-article__related { display: grid; gap: var(--space-xl); padding: var(--space-xl); background: var(--color-paper-2); }

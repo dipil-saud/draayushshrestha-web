@@ -13,6 +13,7 @@ interface Props {
 const { guide } = Astro.props as Props;
 const canonical = `https://draayushshrestha.com${guidePath(guide)}`;
 const image = `https://draayushshrestha.com${guide.image.src}`;
+const relatedGuides = patientGuides.filter((candidate) => candidate.category === guide.category && candidate.id !== guide.id);
 const publishedLabel = new Intl.DateTimeFormat("en", { day: "numeric", month: "long", year: "numeric" }).format(new Date(`${guide.published}T00:00:00Z`));
 const updatedLabel = new Intl.DateTimeFormat("en", { day: "numeric", month: "long", year: "numeric" }).format(new Date(`${guide.updated}T00:00:00Z`));
 
@@ -88,7 +89,7 @@ const structuredData = [{
           {guide.closing && <p>{guide.closing}</p>}
         </div>
 
-        <aside class="medical-note patient-article__notice"><strong>Medical information notice</strong><p>This guide provides general education and does not replace an individual diagnosis or treatment plan. Follow instructions from your own healthcare team. Seek urgent or emergency care when warning signs described above are present.</p></aside>
+        <aside class="patient-article__notice">General information only; this guide does not replace professional medical advice.</aside>
 
         <section class="patient-article__references" aria-labelledby="references-heading">
           <h2 id="references-heading">References and further reading</h2>
@@ -97,8 +98,8 @@ const structuredData = [{
         </section>
 
         <section class="patient-article__related" aria-labelledby="related-heading">
-          <div><p class="kicker">Continue exploring</p><h2 id="related-heading">Related care</h2></div>
-          <div><a href="/conditions.html">Browse orthopaedic and spine conditions →</a><a href="/treatments.html">Explore treatment options →</a><a href="/contact.html">Book an appointment →</a></div>
+          <div><p class="kicker">Continue exploring</p><h2 id="related-heading">More {guide.category.toLowerCase()}</h2></div>
+          <div>{relatedGuides.map((relatedGuide) => <a href={guidePath(relatedGuide)}>{relatedGuide.title} →</a>)}</div>
         </section>
       </div>
     </article>
