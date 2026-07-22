@@ -1,0 +1,56 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/styles.css";
+
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  active: "home" | "about" | "conditions" | "patient-guides" | "contact";
+  image?: string;
+  structuredData?: Record<string, unknown>[];
+}
+
+const {
+  title,
+  description,
+  canonical,
+  active,
+  image = "https://draayushshrestha.com/assets/images/conference-presentation.jpg",
+  structuredData = [],
+} = Astro.props as Props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/assets/favicon.png" />
+    <link rel="apple-touch-icon" href="/assets/favicon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Dr. Aayush Shrestha" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:alt" content="Dr. Aayush Shrestha, orthopaedic and spine surgeon" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    {structuredData.map((data) => <script is:inline type="application/ld+json" set:html={JSON.stringify(data)} />)}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header active={active} />
+    <slot />
+    <Footer />
+    <script is:inline src="/script.js"></script>
+  </body>
+</html>

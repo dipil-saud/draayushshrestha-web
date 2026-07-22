@@ -1,0 +1,43 @@
+---
+interface Props {
+  active: "home" | "about" | "conditions" | "patient-guides" | "contact";
+}
+
+const { active } = Astro.props;
+const links = [
+  { key: "home", href: "/", label: "Home" },
+  { key: "about", href: "/about.html", label: "About" },
+  { key: "conditions", href: "/conditions.html", label: "Conditions" },
+  { key: "patient-guides", href: "/patient-guides.html", label: "Patient guides" },
+  { key: "contact", href: "/contact.html", label: "Contact" },
+] as const;
+---
+
+<header class="site-header" data-header>
+  <div class="notice">
+    <div class="shell notice__inner">
+      <p>Appointments: Kupondole. <a href="/contact.html">Details</a></p>
+      <button class="notice__close" type="button" aria-label="Dismiss appointment notice" data-banner-close>×</button>
+    </div>
+  </div>
+  <div class="nav">
+    <div class="shell nav__inner">
+      <a class="brand" href="/" aria-label="Dr. Aayush Shrestha home">
+        <strong>Dr. Aayush Shrestha</strong>
+        <span>Orthopaedic &amp; Spine Surgeon</span>
+      </a>
+      <nav class="nav__links" aria-label="Primary navigation">
+        {links.map((link) => <a href={link.href} aria-current={active === link.key ? "page" : undefined}>{link.label}</a>)}
+      </nav>
+      <div class="nav__actions">
+        <a class="btn btn--primary" href="/contact.html">Book appointment</a>
+        <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-menu-toggle>Menu</button>
+      </div>
+    </div>
+  </div>
+  <nav class="mobile-menu" aria-label="Mobile navigation" data-mobile-menu>
+    <div class="shell mobile-menu__inner">
+      {links.map((link) => <a href={link.href} aria-current={active === link.key ? "page" : undefined}>{link.label}</a>)}
+    </div>
+  </nav>
+</header>
