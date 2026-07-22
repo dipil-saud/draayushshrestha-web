@@ -1,0 +1,119 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const nonOperativeTreatments = [
+  { name: "Physical therapy", description: "Customised exercise and rehabilitation programmes designed to strengthen the spine, improve flexibility and reduce pain." },
+  { name: "Medication management", description: "Prescribing and monitoring medication to manage pain, inflammation and other symptoms associated with orthopaedic and spine conditions." },
+  { name: "Epidural steroid injections", description: "Corticosteroid injections used in selected patients to reduce inflammation and pain affecting spinal nerves." },
+  { name: "Nerve blocks", description: "Targeted injections used to interrupt pain signals from specific nerves and help manage chronic pain." },
+  { name: "Lifestyle and ergonomic counselling", description: "Guidance on activity, posture and ergonomics to help prevent or manage spine problems." },
+  { name: "Bracing and support", description: "Braces or support devices used when appropriate to stabilise an area and support recovery." },
+  { name: "Education and self-care", description: "Practical information and strategies that help patients understand and manage their condition at home." },
+];
+
+const spineTreatments = [
+  { name: "Spinal fusion surgery", description: "Stabilisation of the spine for selected conditions such as degenerative disc disease and spondylolisthesis." },
+  { name: "Minimally invasive spine surgery", description: "Less invasive approaches used for selected conditions, including herniated discs and spinal stenosis." },
+  { name: "Scoliosis correction", description: "Surgical and non-surgical management of scoliosis and abnormal spinal curvature." },
+  { name: "Spinal decompression", description: "Relief of pressure on spinal nerves caused by conditions such as a herniated disc or spinal stenosis." },
+  { name: "Spine trauma and fracture management", description: "Assessment and treatment of spine fractures and traumatic spinal injuries." },
+  { name: "Spinal tumour surgery", description: "Surgical management of spinal tumours as part of multidisciplinary care." },
+  { name: "Reconstructive spine surgery", description: "Treatment for selected complex spinal deformities and other conditions requiring reconstruction." },
+  { name: "Pain-management procedures", description: "Procedures such as epidural steroid injections and nerve blocks for selected causes of chronic spine-related pain." },
+];
+
+const orthopaedicTreatments = [
+  { name: "Fracture management", description: "Treatment of fractures ranging from simple breaks to complex traumatic injuries." },
+  { name: "Spine surgery", description: "Surgical care for selected spinal conditions, including herniated discs, spinal stenosis and scoliosis." },
+  { name: "Sports medicine", description: "Care for sports-related injuries, including ligament repair and reconstructive procedures when indicated." },
+  { name: "Paediatric orthopaedics", description: "Orthopaedic care for children with congenital, developmental or traumatic musculoskeletal conditions." },
+  { name: "Orthopaedic oncology", description: "Treatment of bone and soft-tissue tumours using a multidisciplinary approach." },
+  { name: "Hand and upper-extremity surgery", description: "Management of hand, wrist and elbow conditions, including carpal tunnel syndrome and tendon injuries." },
+  { name: "Foot and ankle surgery", description: "Treatment of deformities, injuries and other conditions affecting the foot and ankle." },
+  { name: "Orthopaedic trauma care", description: "Assessment and treatment of urgent musculoskeletal injuries, fractures and dislocations." },
+];
+
+const sections = [
+  { id: "non-operative", number: "01", name: "Non-operative treatment", description: "Conservative care used to reduce pain, restore function and support recovery without surgery where appropriate." },
+  { id: "spine-surgery", number: "02", name: "Spine surgery", description: "Surgical and procedural options for selected degenerative, traumatic, deformity and tumour conditions." },
+  { id: "orthopaedic-surgery", number: "03", name: "Orthopaedic surgery", description: "Care for fractures, sports injuries, tumours and conditions affecting the limbs and joints." },
+  { id: "awareness", number: "04", name: "Education and awareness", description: "Community education on posture, injury prevention, recovery and musculoskeletal health." },
+];
+
+const structuredData = [{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": "https://draayushshrestha.com/treatments.html#webpage",
+  url: "https://draayushshrestha.com/treatments.html",
+  name: "Orthopaedic and Spine Treatments",
+  description: "Non-operative treatment, spine surgery and orthopaedic surgery services provided by Dr. Aayush Shrestha in Nepal.",
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: sections.map((section, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: section.name,
+      url: `https://draayushshrestha.com/treatments.html#${section.id}`,
+    })),
+  },
+}];
+---
+
+<BaseLayout
+  title="Orthopaedic & Spine Treatments | Dr. Aayush Shrestha Nepal"
+  description="Explore non-operative care, spine surgery, fracture care, sports medicine and orthopaedic surgery provided by Dr. Aayush Shrestha in Nepal."
+  canonical="https://draayushshrestha.com/treatments.html"
+  active="treatments"
+  structuredData={structuredData}
+>
+  <main id="main">
+    <section class="shell page-hero treatments-hero">
+      <p class="kicker">Care and procedures</p>
+      <h1>Orthopaedic and spine treatments</h1>
+      <p>Treatment is selected after clinical assessment and may involve education, rehabilitation, medication, injections or surgery. The appropriate approach depends on the diagnosis, symptoms and individual needs.</p>
+    </section>
+
+    <nav class="treatment-index" aria-label="Treatment sections">
+      <div class="shell treatment-index__grid">
+        {sections.map((section) => (
+          <a href={`#${section.id}`}><span>{section.number}</span><strong>{section.name}</strong><p>{section.description}</p></a>
+        ))}
+      </div>
+    </nav>
+
+    <section class="section treatment-section section--paper-2" id="non-operative">
+      <div class="shell">
+        <div class="treatment-section__head"><div><p class="kicker">01 / Conservative care</p><h2>Non-operative treatment</h2></div><p>Dr. Shrestha places emphasis on non-operative treatment where feasible. These options are intended to reduce pain, improve function and support quality of life without surgery.</p></div>
+        <div class="treatment-list">{nonOperativeTreatments.map((treatment) => <article><h3>{treatment.name}</h3><p>{treatment.description}</p></article>)}</div>
+      </div>
+    </section>
+
+    <section class="section treatment-section" id="spine-surgery">
+      <div class="shell">
+        <div class="treatment-section__head"><div><p class="kicker">02 / Specialist procedures</p><h2>Spine surgery</h2></div><p>Spine care can include non-surgical management, pain procedures or surgery. Surgery is considered for selected conditions after the clinical findings, imaging and treatment options have been reviewed.</p></div>
+        <div class="treatment-list">{spineTreatments.map((treatment) => <article><h3>{treatment.name}</h3><p>{treatment.description}</p></article>)}</div>
+      </div>
+    </section>
+
+    <section class="section treatment-section section--paper-2" id="orthopaedic-surgery">
+      <div class="shell">
+        <div class="treatment-section__head"><div><p class="kicker">03 / Musculoskeletal care</p><h2>Orthopaedic surgery</h2></div><p>Orthopaedic services cover musculoskeletal injuries and conditions affecting bones, joints, muscles, ligaments, tendons and nerves. Treatment may be non-operative or surgical.</p></div>
+        <div class="treatment-list">{orthopaedicTreatments.map((treatment) => <article><h3>{treatment.name}</h3><p>{treatment.description}</p></article>)}</div>
+      </div>
+    </section>
+
+    <section class="section section--dark awareness-section" id="awareness">
+      <div class="shell awareness-layout">
+        <div><p class="kicker">04 / Prevention and understanding</p><h2>Education and awareness</h2></div>
+        <div class="awareness-copy"><p>Dr. Shrestha provides lectures for schoolchildren on posture and spine care from a young age. Sessions for sportspeople focus on injury prevention, appropriate training techniques and recovery strategies.</p><p>He also discusses common orthopaedic and spine conditions, prevention and treatment options through national television health programmes and a dedicated YouTube channel.</p><a class="btn btn--light" href="https://youtube.com/@dr.AayushShrestha">Visit the YouTube channel</a></div>
+      </div>
+    </section>
+
+    <section class="section treatment-next">
+      <div class="shell treatment-next__grid">
+        <div><p class="kicker">Before treatment</p><h2>Assessment comes first</h2></div>
+        <div><p>The services listed here do not mean that every option is suitable for every patient. A consultation is needed to establish a diagnosis and discuss benefits, limitations, alternatives and expected recovery.</p><div class="treatment-next__actions"><a class="btn btn--primary" href="contact.html">Book an appointment</a><a class="text-link" href="conditions.html">Browse conditions</a></div></div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
