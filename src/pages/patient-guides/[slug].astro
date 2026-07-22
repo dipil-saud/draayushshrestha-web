@@ -1,0 +1,106 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { guidePath, patientGuides, type PatientGuide } from "../../data/patient-guides";
+
+export function getStaticPaths() {
+  return patientGuides.map((guide) => ({ params: { slug: guide.id }, props: { guide } }));
+}
+
+interface Props {
+  guide: PatientGuide;
+}
+
+const { guide } = Astro.props as Props;
+const canonical = `https://draayushshrestha.com${guidePath(guide)}`;
+const image = `https://draayushshrestha.com${guide.image.src}`;
+const publishedLabel = new Intl.DateTimeFormat("en", { day: "numeric", month: "long", year: "numeric" }).format(new Date(`${guide.published}T00:00:00Z`));
+const updatedLabel = new Intl.DateTimeFormat("en", { day: "numeric", month: "long", year: "numeric" }).format(new Date(`${guide.updated}T00:00:00Z`));
+
+const structuredData = [{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalWebPage",
+      "@id": `${canonical}#webpage`,
+      url: canonical,
+      name: guide.title,
+      description: guide.description,
+      datePublished: guide.published,
+      dateModified: guide.updated,
+      author: { "@id": "https://draayushshrestha.com/#doctor" },
+      citation: guide.references.map((reference) => reference.url),
+      mainEntity: { "@id": `${canonical}#article` },
+    },
+    {
+      "@type": "Article",
+      "@id": `${canonical}#article`,
+      headline: guide.title,
+      description: guide.description,
+      image,
+      datePublished: guide.published,
+      dateModified: guide.updated,
+      author: { "@id": "https://draayushshrestha.com/#doctor" },
+      publisher: { "@type": "Person", "@id": "https://draayushshrestha.com/#doctor", name: "Dr. Aayush Shrestha" },
+      mainEntityOfPage: { "@id": `${canonical}#webpage` },
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://draayushshrestha.com/" },
+        { "@type": "ListItem", position: 2, name: "Patient Guides", item: "https://draayushshrestha.com/patient-guides.html" },
+        { "@type": "ListItem", position: 3, name: guide.title, item: canonical },
+      ],
+    },
+  ],
+}];
+---
+
+<BaseLayout
+  title={`${guide.title} | Dr. Aayush Shrestha`}
+  description={guide.description}
+  canonical={canonical}
+  active="patient-guides"
+  image={image}
+  imageAlt={guide.image.alt}
+  ogType="article"
+  publishedTime={guide.published}
+  modifiedTime={guide.updated}
+  structuredData={structuredData}
+>
+  <main id="main">
+    <article class="patient-article">
+      <header class="patient-article__header">
+        <div class="narrow">
+          <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/patient-guides.html">Patient Guides</a></nav>
+          <p class="kicker">{guide.category}</p>
+          <h1>{guide.title}</h1>
+          <p class="patient-article__description">{guide.description}</p>
+          <div class="patient-article__meta"><span>By Dr. Aayush Shrestha</span><span>Published <time datetime={guide.published}>{publishedLabel}</time></span><span>Updated <time datetime={guide.updated}>{updatedLabel}</time></span></div>
+        </div>
+      </header>
+
+      <figure class="patient-article__image"><img src={guide.image.src} alt={guide.image.alt} width={guide.image.width} height={guide.image.height} fetchpriority="high" /></figure>
+
+      <div class="narrow patient-article__layout">
+        <div class="patient-article__body">
+          {guide.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+          {guide.points.length > 0 && <ul>{guide.points.map((point) => <li>{point.label && <strong>{point.label}: </strong>}{point.text}</li>)}</ul>}
+          {guide.closing && <p>{guide.closing}</p>}
+        </div>
+
+        <aside class="medical-note patient-article__notice"><strong>Medical information notice</strong><p>This guide provides general education and does not replace an individual diagnosis or treatment plan. Follow instructions from your own healthcare team. Seek urgent or emergency care when warning signs described above are present.</p></aside>
+
+        <section class="patient-article__references" aria-labelledby="references-heading">
+          <h2 id="references-heading">References and further reading</h2>
+          <ol>{guide.references.map((reference) => <li><a href={reference.url}>{reference.title}</a><span>{reference.publisher}</span></li>)}</ol>
+          <p>Content updated on <time datetime={guide.updated}>{updatedLabel}</time>. Clinical recommendations should be reviewed periodically as evidence and guidance change.</p>
+        </section>
+
+        <section class="patient-article__related" aria-labelledby="related-heading">
+          <div><p class="kicker">Continue exploring</p><h2 id="related-heading">Related care</h2></div>
+          <div><a href="/conditions.html">Browse orthopaedic and spine conditions →</a><a href="/treatments.html">Explore treatment options →</a><a href="/contact.html">Book an appointment →</a></div>
+        </section>
+      </div>
+    </article>
+  </main>
+</BaseLayout>
