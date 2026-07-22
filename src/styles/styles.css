@@ -374,11 +374,23 @@ main { padding-block-start: calc(var(--banner-h) + var(--nav-h)); }
 .directory__item ul { display: grid; gap: var(--space-xs); }
 .directory__item li { position: relative; padding-inline-start: var(--space-md); }
 .directory__item li::before { content: ""; position: absolute; inset: 0.75em auto auto 0; width: 0.3rem; height: 0.3rem; background: var(--color-accent); }
-.contact-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-xl); }
-.contact-list { display: grid; border-block-start: 1px solid var(--color-rule); }
-.contact-list a, .contact-list div { display: grid; gap: var(--space-2xs); padding-block: var(--space-lg); border-block-end: 1px solid var(--color-rule); text-decoration: none; }
-.contact-list span { color: var(--color-muted); font-size: var(--text-sm); }
 .map-frame { width: 100%; min-height: 25rem; border: 0; }
+.contact-page { padding-block: var(--space-2xl) var(--space-3xl); }
+.contact-page__header { display: grid; max-width: 42rem; padding-block-end: var(--space-xl); }
+.contact-page__header > div { display: grid; gap: var(--space-sm); }
+.contact-page__header h1 { font-size: var(--text-2xl); }
+.contact-page__header > div:first-child > p:last-child, .contact-page__clinic p { color: var(--color-muted); font-size: var(--text-md); }
+.contact-page__clinic h2 { font-size: var(--text-xl); }
+.contact-page__clinic .text-link { width: fit-content; margin-block-start: var(--space-xs); }
+.contact-layout { display: grid; gap: var(--space-xl); align-items: stretch; }
+.contact-details { display: grid; align-content: start; gap: var(--space-xl); min-width: 0; }
+.map-frame--large { display: block; min-height: 22rem; border: var(--rule-width) solid var(--color-rule); }
+.contact-actions { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--rule-width); margin-block-start: var(--space-lg); border: var(--rule-width) solid var(--color-rule); background: var(--color-rule); }
+.contact-action { display: grid; gap: var(--space-xs); min-width: 0; padding: var(--space-md); background: var(--color-paper); text-decoration: none; }
+.contact-action span { color: var(--color-muted); font-size: var(--text-sm); }
+.contact-action strong { overflow-wrap: anywhere; }
+.contact-utility { display: flex; flex-wrap: wrap; gap: var(--space-sm) var(--space-xl); padding-block-start: var(--space-lg); }
+.contact-utility a { color: var(--color-muted); font-size: var(--text-sm); white-space: nowrap; }
 .disclaimer { padding: var(--space-lg); border: 1px solid var(--color-rule); background: var(--color-paper-2); font-size: var(--text-sm); }
 
 .cta-band { display: grid; gap: var(--space-lg); align-items: end; }
@@ -420,7 +432,7 @@ main { padding-block-start: calc(var(--banner-h) + var(--nav-h)); }
   .body-map { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .article-grid, .directory { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .guide-library { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .contact-grid { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); }
+  .contact-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .cta-band { grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.6fr); }
   .guide-row { grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.8fr); align-items: start; }
   .guide-row .text-link { grid-column: 2; }
@@ -436,12 +448,15 @@ main { padding-block-start: calc(var(--banner-h) + var(--nav-h)); }
   .hero__portrait { margin-inline-end: -5vw; }
   .hero__portrait img { aspect-ratio: 5 / 6; }
   .section-head { grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); align-items: end; }
+  .contact-layout { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .map-frame--large { min-height: 30rem; }
   .split { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-3xl); }
   .split--reverse .split__copy { order: 2; }
   .split--reverse .split__media { order: 1; }
   .body-map { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .article-grid { grid-template-columns: 1.3fr 0.85fr 0.85fr; }
   .guide-library { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .contact-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .directory { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .footer__mast { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
   .guide-row { grid-template-columns: minmax(0, 0.55fr) minmax(0, 1.45fr) auto; align-items: center; }
