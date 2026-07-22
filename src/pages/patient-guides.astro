@@ -220,6 +220,28 @@ const guides: Guide[] = [
     closing: "See a doctor promptly if you experience these symptoms. Nerve compression can have several causes, and early treatment can help prevent further damage.",
   },
 ];
+
+interface PreviewImage {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
+const previewImages: Record<string, PreviewImage> = {
+  "wound-care": { src: "/assets/images/surgery.jpg", alt: "Surgical team providing patient care", width: 1080, height: 608 },
+  "exercises-over-50": { src: "/assets/images/knee-osteoarthritis.png", alt: "Illustration of osteoarthritis in the knee", width: 619, height: 412 },
+  "healthy-spine": { src: "/assets/images/conference-presentation.jpg", alt: "Dr. Aayush Shrestha presenting on spine health", width: 1600, height: 1066 },
+  "spine-surgery-myths": { src: "/assets/images/hero-conference.jpg", alt: "Dr. Aayush Shrestha at a medical conference", width: 3057, height: 2081 },
+  "healthy-knees": { src: "/assets/images/knee-pain.jpg", alt: "Person supporting a painful knee", width: 1200, height: 675 },
+  "workout-pain": { src: "/assets/images/foot-ankle.jpg", alt: "Person supporting a painful foot after exercise", width: 617, height: 349 },
+  "healthy-neck": { src: "/assets/images/neck-nerve-pain.jpeg", alt: "Illustration of cervical nerve pain", width: 1440, height: 1080 },
+  "surgical-wound": { src: "/assets/images/surgery.jpg", alt: "Surgical team at work", width: 1080, height: 608 },
+  "neck-pain-myths": { src: "/assets/images/neck-nerve-pain.jpeg", alt: "Illustration of pain from the neck into the arm", width: 1440, height: 1080 },
+  "disc-herniation": { src: "/assets/images/neck-nerve-pain.jpeg", alt: "Illustration of cervical nerve compression", width: 1440, height: 1080 },
+  "back-pain": { src: "/assets/images/conference-presentation.jpg", alt: "Dr. Aayush Shrestha presenting on spinal surgery", width: 1600, height: 1066 },
+  "nerve-compression": { src: "/assets/images/neck-nerve-pain.jpeg", alt: "Illustration of cervical nerve pain", width: 1440, height: 1080 },
+};
 ---
 
 <BaseLayout
@@ -230,23 +252,94 @@ const guides: Guide[] = [
 >
   <main id="main">
     <section class="shell page-hero guides-hero"><p class="kicker">Patient education</p><h1>Know your body</h1><p>Health tips, danger signs, and myths and facts about common orthopaedic and spine concerns.</p></section>
-    <section class="section section--tight"><div class="shell guide-library">
+    <section class="guide-toolbar" aria-label="Filter patient guides" data-guide-filters>
+      <div class="shell guide-toolbar__inner">
+        <p class="guide-filter-count" aria-live="polite" data-guide-count>{guides.length} guides</p>
+        <div class="guide-filters">
+          <button class="guide-filter" type="button" data-guide-filter="all" aria-pressed="true">All guides</button>
+          <button class="guide-filter" type="button" data-guide-filter="Health tips" aria-pressed="false">Health tips</button>
+          <button class="guide-filter" type="button" data-guide-filter="Danger signs" aria-pressed="false">Danger signs</button>
+          <button class="guide-filter" type="button" data-guide-filter="Myths and facts" aria-pressed="false">Myths &amp; facts</button>
+        </div>
+      </div>
+    </section>
+    <section class="section section--tight"><div class="shell">
+      <div class="guide-library">
+        {guides.map((guide) => (
+          <article class="guide-post" id={guide.id} data-guide-card data-category={guide.category}>
+            <figure class="guide-post__media"><img src={previewImages[guide.id].src} alt={previewImages[guide.id].alt} width={previewImages[guide.id].width} height={previewImages[guide.id].height} loading="lazy" /></figure>
+            <header><p class="kicker">{guide.category}</p><h2>{guide.title}</h2><p>April 23, 2024</p></header>
+            <button class="guide-read-more" type="button" aria-haspopup="dialog" aria-controls={`guide-dialog-${guide.id}`} data-guide-open={`guide-dialog-${guide.id}`}><span>Read article</span><span aria-hidden="true">↗</span></button>
+          </article>
+        ))}
+      </div>
       {guides.map((guide) => (
-        <article class="guide-post" id={guide.id}>
-          <header><p class="kicker">{guide.category}</p><h2>{guide.title}</h2><p>April 23, 2024</p></header>
-          <details class="condition-disclosure">
-            <summary>Read article</summary>
+        <dialog class="guide-dialog" id={`guide-dialog-${guide.id}`} aria-labelledby={`guide-dialog-title-${guide.id}`} data-guide-dialog>
+          <div class="guide-dialog__panel">
+            <header class="guide-dialog__header">
+              <div><p class="kicker">{guide.category}</p><h2 id={`guide-dialog-title-${guide.id}`}>{guide.title}</h2><p>April 23, 2024</p></div>
+              <button class="guide-dialog__close" type="button" data-guide-close>Close</button>
+            </header>
             <div class="guide-post__body">
               {guide.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
               {guide.points.length > 0 && <ul>{guide.points.map((point) => <li>{point.label && <strong>{point.label}: </strong>}{point.text}</li>)}</ul>}
               {guide.closing && <p>{guide.closing}</p>}
               <p class="guide-post__byline">Dr. Aayush Shrestha<br />Orthopaedic and Spine Surgeon</p>
             </div>
-          </details>
-        </article>
+          </div>
+        </dialog>
       ))}
     </div></section>
     <section class="section"><div class="narrow"><div class="medical-note"><strong>Medical information notice</strong><p>These articles provide general education and do not replace an individual diagnosis or treatment plan. Seek medical attention for severe or rapidly worsening symptoms.</p></div></div></section>
     <section class="section section--dark"><div class="shell cta-band"><h2>Get in touch</h2><div><p>Message us to book an appointment.</p><p class="action-block"><a class="btn btn--light" href="contact.html">Contact us</a></p></div></div></section>
   </main>
 </BaseLayout>
+
+<script>
+  const toolbar = document.querySelector<HTMLElement>("[data-guide-filters]");
+
+  if (toolbar) {
+    const buttons = Array.from(toolbar.querySelectorAll<HTMLButtonElement>("[data-guide-filter]"));
+    const cards = Array.from(document.querySelectorAll<HTMLElement>("[data-guide-card]"));
+    const count = toolbar.querySelector<HTMLElement>("[data-guide-count]");
+
+    toolbar.addEventListener("click", (event) => {
+      const button = (event.target as HTMLElement).closest<HTMLButtonElement>("[data-guide-filter]");
+      if (!button) return;
+
+      const filter = button.dataset.guideFilter;
+      let visible = 0;
+
+      buttons.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+      cards.forEach((card) => {
+        const show = filter === "all" || card.dataset.category === filter;
+        card.hidden = !show;
+        if (show) visible += 1;
+      });
+
+      if (count) count.textContent = `${visible} ${visible === 1 ? "guide" : "guides"}`;
+    });
+  }
+
+  const dialogs = Array.from(document.querySelectorAll<HTMLDialogElement>("[data-guide-dialog]"));
+
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Element)) return;
+
+    const openButton = event.target.closest<HTMLButtonElement>("[data-guide-open]");
+    if (openButton) {
+      const dialog = document.getElementById(openButton.dataset.guideOpen ?? "");
+      if (dialog instanceof HTMLDialogElement) dialog.showModal();
+      return;
+    }
+
+    const closeButton = event.target.closest<HTMLButtonElement>("[data-guide-close]");
+    if (closeButton) closeButton.closest<HTMLDialogElement>("dialog")?.close();
+  });
+
+  dialogs.forEach((dialog) => {
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+  });
+</script>
