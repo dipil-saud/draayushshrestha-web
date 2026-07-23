@@ -34,15 +34,14 @@ const idPrefix = "faq";
 
 <section class="shell faq" aria-labelledby={`${idPrefix}-heading`}>
   <header class="faq__head">
-    <h2 id={`${idPrefix}-heading`}>{heading}</h2>
-    <p>{intro}</p>
+    <h2 id={`${idPrefix}-heading`} class="faq__heading">{heading}</h2>
+    <p class="faq__intro">{intro}</p>
   </header>
   <div class="faq__list">
     {faqs.map((faq, index) => (
-      <details class="faq__item" name={idPrefix} open={index === 0}>
+      <details class="faq__item" id={`${idPrefix}-${index}`} open={index === 0}>
         <summary>
           <span>{faq.question}</span>
-          <span aria-hidden="true" class="faq__icon">+</span>
         </summary>
         <div class="faq__answer">
           <p>{faq.answer}</p>
@@ -53,36 +52,42 @@ const idPrefix = "faq";
 </section>
 
 <style>
+  /* Hallmark · section redesign: compact + minimal · system: Studio (preserved) */
   .faq {
     display: grid;
-    gap: var(--space-xl);
-    padding-block: var(--space-2xl);
+    gap: var(--space-lg);
+    padding-block: var(--space-xl);
+    border-block-start: var(--rule-width) solid var(--color-rule);
   }
   .faq__head {
     display: grid;
-    gap: var(--space-sm);
-    max-width: 42rem;
+    gap: var(--space-2xs);
+    max-width: 48rem;
   }
-  .faq__head p {
+  .faq__heading {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    letter-spacing: -0.02em;
+  }
+  .faq__intro {
     color: var(--color-muted);
-    font-size: var(--text-md);
+    font-size: var(--text-sm);
   }
   .faq__list {
     display: grid;
-    border: var(--rule-width) solid var(--color-rule);
-    background: var(--color-rule);
-    gap: var(--rule-width);
+    border-block-start: var(--rule-width) solid var(--color-rule);
   }
   .faq__item {
-    background: var(--color-paper);
+    border-block-end: var(--rule-width) solid var(--color-rule);
   }
   .faq__item summary {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: var(--space-md);
-    min-height: 3.5rem;
-    padding: var(--space-md) var(--space-lg);
+    min-height: 2.75rem;
+    padding-block: var(--space-sm);
+    color: var(--color-ink);
+    font-size: var(--text-base);
     font-weight: 600;
     cursor: pointer;
     list-style: none;
@@ -90,18 +95,29 @@ const idPrefix = "faq";
   .faq__item summary::-webkit-details-marker {
     display: none;
   }
-  .faq__icon {
-    color: var(--color-accent-dark);
+  .faq__item summary::after {
+    content: "+";
+    flex: 0 0 auto;
+    color: var(--color-muted);
     font-family: var(--font-display);
     font-size: var(--text-lg);
+    font-weight: 400;
     line-height: 1;
+    transition: transform var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out);
   }
-  .faq__item[open] .faq__icon {
+  .faq__item[open] summary::after {
     transform: rotate(45deg);
+    color: var(--color-accent-dark);
   }
   .faq__answer {
-    padding: 0 var(--space-lg) var(--space-lg);
+    padding-block-end: var(--space-md);
     color: var(--color-muted);
     max-width: 48rem;
+  }
+  .faq__answer p {
+    font-size: var(--text-sm);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .faq__item summary:hover::after { color: var(--color-accent-dark); }
   }
 </style>
