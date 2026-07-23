@@ -1,9 +1,9 @@
 {
-  "date": "2026-07-19",
-  "framework": "vanilla HTML",
-  "fontStack": "none",
-  "palette": "none",
+  "date": "2026-07-23",
+  "framework": "Astro 7 static output",
+  "fontStack": "Newsreader display + IBM Plex Sans body",
+  "palette": "OKLCH clinical green and tinted paper tokens",
   "motion": "motion-cut",
-  "spacing": "none",
-  "result": "Full Hallmark stack introduced"
+  "spacing": "named 4px-based CSS custom-property scale",
+  "result": "Existing Hallmark clinical-editorial system preserved"
 }

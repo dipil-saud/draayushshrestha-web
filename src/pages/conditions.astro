@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import ResponsiveImage from "../components/ResponsiveImage.astro";
 import { whatHurtsCategories } from "../data/what-hurts";
 
 const categoryIds: Record<string, string> = {
@@ -38,16 +39,18 @@ const conditionLeadByCategory: Record<string, string> = {
     <section class="conditions-browser"><div class="shell conditions-layout">
       <aside class="condition-rail"><div class="condition-rail__inner"><p class="kicker">Browse by area</p><nav class="condition-rail__links" aria-label="Condition categories">{whatHurtsCategories.map((category, index) => <a href={`#${categoryIds[category.name]}`}><span>{String(index + 1).padStart(2, "0")}</span>{category.name}</a>)}</nav></div></aside>
       <div class="what-hurts-categories">
-        {whatHurtsCategories.map((category, index) => (
+        {whatHurtsCategories.map((category) => (
           <section class="what-hurts-category" id={categoryIds[category.name]}>
             <div class="what-hurts-category__lead">
-              <div class="what-hurts-category__copy"><p class="kicker">{String(index + 1).padStart(2, "0")}</p><h2>{category.name}</h2><p>{category.introduction}</p></div>
-              <figure><img src={category.image.src} width={category.image.width} height={category.image.height} loading={index === 0 ? "eager" : "lazy"} alt={category.image.alt} /></figure>
+              <div class="what-hurts-category__copy"><h2>{category.name}</h2><p>{category.introduction}</p></div>
+              <figure><ResponsiveImage src={category.image.src} sizes="(min-width: 60rem) 39vw, calc(100vw - 2rem)" alt={category.image.alt} /></figure>
             </div>
-            <p class="what-hurts-category__label">{conditionLeadByCategory[category.name]}</p>
-            <div class="condition-definitions-list">
-              {category.conditions.map((condition) => <article><h3>{condition.name}</h3><p>{condition.description}</p></article>)}
-            </div>
+            <details class="condition-group">
+              <summary><span>{conditionLeadByCategory[category.name]}</span><span>{category.conditions.length} conditions</span></summary>
+              <div class="condition-definitions-list">
+                {category.conditions.map((condition) => <article><h3>{condition.name}</h3><p>{condition.description}</p></article>)}
+              </div>
+            </details>
           </section>
         ))}
       </div>

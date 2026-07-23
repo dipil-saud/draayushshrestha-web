@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import ResponsiveImage from "../../components/ResponsiveImage.astro";
 import { guidePath, patientGuides, type PatientGuide } from "../../data/patient-guides";
+import { getImage } from "astro:assets";
 
 export function getStaticPaths() {
   return patientGuides.map((guide) => ({ params: { slug: guide.id }, props: { guide } }));
@@ -12,7 +14,8 @@ interface Props {
 
 const { guide } = Astro.props as Props;
 const canonical = `https://draayushshrestha.com${guidePath(guide)}`;
-const image = `https://draayushshrestha.com${guide.image.src}`;
+const socialImage = await getImage({ src: guide.image.src, width: 1200, height: 630, format: "jpg" });
+const image = new URL(socialImage.src, Astro.site).href;
 const relatedGuides = patientGuides.filter((candidate) => candidate.category === guide.category && candidate.id !== guide.id);
 const publishedLabel = new Intl.DateTimeFormat("en", { day: "numeric", month: "long", year: "numeric" }).format(new Date(`${guide.published}T00:00:00Z`));
 const updatedLabel = new Intl.DateTimeFormat("en", { day: "numeric", month: "long", year: "numeric" }).format(new Date(`${guide.updated}T00:00:00Z`));
@@ -80,7 +83,7 @@ const structuredData = [{
         </div>
       </header>
 
-      <figure class="patient-article__image"><img src={guide.image.src} alt={guide.image.alt} width={guide.image.width} height={guide.image.height} fetchpriority="high" /></figure>
+      <figure class="patient-article__image"><ResponsiveImage src={guide.image.src} alt={guide.image.alt} sizes="min(52rem, calc(100vw - 2rem))" loading="eager" fetchpriority="high" /></figure>
 
       <div class="narrow patient-article__layout">
         <div class="patient-article__body">

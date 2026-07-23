@@ -1,0 +1,74 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const credits = [
+  {
+    title: "Hip joint pain",
+    creator: "InjuryMap",
+    source: "https://commons.wikimedia.org/w/index.php?curid=129114838",
+    license: "CC BY-SA 4.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+  },
+  {
+    title: "Shoulder pain",
+    creator: "InjuryMap",
+    source: "https://commons.wikimedia.org/w/index.php?curid=129114934",
+    license: "CC BY-SA 4.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+  },
+  {
+    title: "Knee Osteoarthritis",
+    creator: "InjuryMap",
+    source: "https://commons.wikimedia.org/w/index.php?curid=129114710",
+    license: "CC BY-SA 4.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+  },
+  {
+    title: "Best Work Boots for Plantar Fasciitis for Men",
+    creator: "gm.esthermax",
+    source: "https://www.flickr.com/photos/29971610@N02/27782440052",
+    license: "CC BY 2.0",
+    licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
+  },
+  {
+    title: "Woman stretches and relaxes at home in living room",
+    creator: "Shixart1985",
+    source: "https://commons.wikimedia.org/w/index.php?curid=186468342",
+    license: "CC BY 2.0",
+    licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
+  },
+  {
+    title: "neck check",
+    creator: "woodleywonderworks",
+    source: "https://www.flickr.com/photos/73645804@N00/15926468939",
+    license: "CC BY 2.0",
+    licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
+  },
+  {
+    title: "Herniated disk",
+    creator: "InjuryMap",
+    source: "https://commons.wikimedia.org/w/index.php?curid=129114599",
+    license: "CC BY-SA 4.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+  },
+];
+---
+
+<BaseLayout
+  title="Image Credits | Dr. Aayush Shrestha"
+  description="Credits and licences for third-party medical images used on this website."
+  canonical="https://draayushshrestha.com/image-credits.html"
+  active="none"
+>
+  <main id="main">
+    <section class="shell page-hero"><h1>Image credits</h1><p>Third-party medical images used on this website are hosted locally and adapted through resizing, cropping, background treatment or web-format conversion.</p></section>
+    <section class="section section--tight"><div class="narrow image-credit-list">
+      {credits.map((credit) => (
+        <article>
+          <h2>{credit.title}</h2>
+          <p>By {credit.creator}. <a href={credit.source}>View source</a> · <a href={credit.licenseUrl}>{credit.license}</a>.</p>
+        </article>
+      ))}
+    </div></section>
+  </main>
+</BaseLayout>

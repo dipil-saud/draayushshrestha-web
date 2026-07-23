@@ -1,13 +1,15 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import { imageAssets } from "../data/images";
+import { getImage } from "astro:assets";
 import "../styles/styles.css";
 
 interface Props {
   title: string;
   description: string;
   canonical: string;
-  active: "home" | "about" | "conditions" | "treatments" | "patient-guides" | "contact";
+  active: "home" | "about" | "conditions" | "treatments" | "patient-guides" | "contact" | "none";
   image?: string;
   imageAlt?: string;
   ogType?: "website" | "article";
@@ -16,12 +18,14 @@ interface Props {
   structuredData?: Record<string, unknown>[];
 }
 
+const defaultSocialImage = await getImage({ src: imageAssets.conferencePresentation, width: 1200, height: 630, format: "jpg" });
+
 const {
   title,
   description,
   canonical,
   active,
-  image = "https://draayushshrestha.com/assets/images/conference-presentation.jpg",
+  image = new URL(defaultSocialImage.src, Astro.site).href,
   imageAlt = "Dr. Aayush Shrestha, orthopaedic and spine surgeon",
   ogType = "website",
   publishedTime,
@@ -33,14 +37,19 @@ const {
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script is:inline>document.documentElement.classList.add("js");</script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" href="/assets/favicon.png" />
-    <link rel="apple-touch-icon" href="/assets/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&amp;family=Newsreader:opsz,wght@6..72,500;6..72,700&amp;display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content="Dr. Aayush Shrestha" />
     <meta property="og:title" content={title} />

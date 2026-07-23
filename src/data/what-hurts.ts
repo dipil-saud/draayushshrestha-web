@@ -1,7 +1,8 @@
+import type { ImageMetadata } from "astro";
+import { imageAssets } from "./images";
+
 export interface WhatHurtsImage {
-  src: string;
-  width: number;
-  height: number;
+  src: ImageMetadata;
   alt: string;
 }
 
@@ -23,9 +24,7 @@ export const whatHurtsCategories: WhatHurtsCategory[] = [
     introduction:
       "Get exceptional care for spinal conditions at our clinic. We offer non-surgical and surgical options. Our experienced team aims to alleviate pain, improve your quality of life, and help you return to your favorite activities.",
     image: {
-      src: "/assets/images/neck-nerve-pain.jpeg",
-      width: 1440,
-      height: 1080,
+      src: imageAssets.neckNervePain,
       alt: "Illustration of cervical nerve pain in the neck and spine",
     },
     conditions: [
@@ -86,10 +85,8 @@ export const whatHurtsCategories: WhatHurtsCategory[] = [
     introduction:
       "Shoulder pain needs professional attention and diagnosis. Treatment may involve pain relievers, physical therapy, rest, or surgery. A personalized plan will be designed for you. Proper care effectively manages most cases.",
     image: {
-      src: "/assets/images/shoulder-pain.png",
-      width: 359,
-      height: 381,
-      alt: "Illustration of a fit couple in exercise clothing",
+      src: imageAssets.shoulderPain,
+      alt: "Medical illustration highlighting pain around the shoulder joint",
     },
     conditions: [
       {
@@ -149,9 +146,7 @@ export const whatHurtsCategories: WhatHurtsCategory[] = [
     introduction:
       "The Knee Pain Clinic specializes in non-surgical treatments for knee pain, such as physical therapy, injections, and bracing. Our team of experts provides personalized care to help patients regain mobility and reduce pain.",
     image: {
-      src: "/assets/images/knee-pain.jpg",
-      width: 1200,
-      height: 675,
+      src: imageAssets.kneePain,
       alt: "Person experiencing knee pain",
     },
     conditions: [
@@ -212,9 +207,7 @@ export const whatHurtsCategories: WhatHurtsCategory[] = [
     introduction:
       "Foot and ankle pain can stem from injuries, medical conditions, or overuse. Prompt treatment can ease symptoms and prevent complications. Treatment options include rest, physical therapy, medication, or surgery based on the underlying cause and severity.",
     image: {
-      src: "/assets/images/foot-ankle.jpg",
-      width: 617,
-      height: 349,
+      src: imageAssets.footAnkle,
       alt: "Person holding a painful foot and ankle",
     },
     conditions: [
@@ -275,9 +268,7 @@ export const whatHurtsCategories: WhatHurtsCategory[] = [
     introduction:
       "Elbow pain can be caused by overuse, trauma, arthritis, or tendinitis. Treatment options vary and may include rest, physical therapy, medication, or surgery. Seek medical attention if pain persists or worsens.",
     image: {
-      src: "/assets/images/elbow.jpg",
-      width: 1183,
-      height: 887,
+      src: imageAssets.elbow,
       alt: "Person holding a painful elbow",
     },
     conditions: [
@@ -338,10 +329,8 @@ export const whatHurtsCategories: WhatHurtsCategory[] = [
     introduction:
       "Hip pain has many causes like arthritis, bursitis, tendinitis, fractures, strains, impingement, tears, and more. Factors like lifestyle and trauma may also contribute. It's important to see a healthcare provider for an evaluation to diagnose and treat the root cause.",
     image: {
-      src: "/assets/images/hip-pain.jpg",
-      width: 268,
-      height: 188,
-      alt: "X-ray illustration highlighting pain in the hip joint",
+      src: imageAssets.hipPain,
+      alt: "Medical illustration highlighting pain around the hip joint",
     },
     conditions: [
       {
@@ -401,9 +390,7 @@ export const whatHurtsCategories: WhatHurtsCategory[] = [
     introduction:
       "Repetitive use, arthritis, injury, tendinitis, and poor posture can cause hand and wrist pain. Health problems like diabetes can contribute. To prevent pain, rest, follow good ergonomics, seek medical attention.",
     image: {
-      src: "/assets/images/hand-wrist.png",
-      width: 744,
-      height: 516,
+      src: imageAssets.handWrist,
       alt: "Person holding a painful hand and wrist",
     },
     conditions: [
@@ -464,9 +451,7 @@ export const whatHurtsCategories: WhatHurtsCategory[] = [
     introduction:
       "100+ rheumatic conditions cause joint and muscle pain, swelling, stiffness, and organ damage. Examples include lupus and rheumatoid arthritis. Causes are unknown but genetics, lifestyle, and environment may play a role. Treatment varies and may involve medication, therapy, or surgery.",
     image: {
-      src: "/assets/images/rheumatic-conditions.jpg",
-      width: 1254,
-      height: 836,
+      src: imageAssets.rheumaticConditions,
       alt: "Hands affected by rheumatic joint pain",
     },
     conditions: [
@@ -527,9 +512,7 @@ export const whatHurtsCategories: WhatHurtsCategory[] = [
     introduction:
       "Clinic trauma care provides immediate evaluation and treatment for patients who have suffered physical or emotional trauma. Out team works together to provide comprehensive care to prevent long-term complications and improve outcomes.",
     image: {
-      src: "/assets/images/trauma.png",
-      width: 512,
-      height: 512,
+      src: imageAssets.trauma,
       alt: "Injured motorcyclist beside a fallen motorcycle",
     },
     conditions: [

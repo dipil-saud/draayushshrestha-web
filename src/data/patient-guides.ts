@@ -1,3 +1,6 @@
+import type { ImageMetadata } from "astro";
+import { imageAssets } from "./images";
+
 export interface GuideReference {
   title: string;
   publisher: string;
@@ -14,7 +17,7 @@ export interface PatientGuide {
   paragraphs: string[];
   points: { label?: string; text: string }[];
   closing?: string;
-  image: { src: string; alt: string; width: number; height: number };
+  image: { src: ImageMetadata; alt: string };
   references: GuideReference[];
 }
 
@@ -38,7 +41,7 @@ export const patientGuides: PatientGuide[] = [
       { label: "Seek medical attention", text: "Seek medical care if the wound is deep, large, contaminated, caused by a bite or shows signs of infection." },
     ],
     closing: "The correct steps depend on the wound’s type, severity and location. Follow instructions from a healthcare professional when they differ from general guidance.",
-    image: { src: "/assets/images/surgery.jpg", alt: "Surgical team providing patient care", width: 1080, height: 608 },
+    image: { src: imageAssets.surgery, alt: "Surgical team providing patient care" },
     references: [
       { title: "Cuts and grazes", publisher: "NHS", url: "https://www.nhs.uk/conditions/cuts-and-grazes/" },
       { title: "How wounds heal", publisher: "MedlinePlus", url: "https://medlineplus.gov/ency/patientinstructions/000741.htm" },
@@ -63,7 +66,7 @@ export const patientGuides: PatientGuide[] = [
       { label: "Yoga and balance work", text: "Appropriate exercises can support flexibility, balance and body control." },
     ],
     closing: "Stop if exercise causes chest pain, severe shortness of breath, dizziness or sudden pain. Seek individual advice if you have symptoms, a chronic condition, recent surgery or uncertainty about safe intensity.",
-    image: { src: "/assets/images/knee-osteoarthritis.png", alt: "Illustration of osteoarthritis in the knee", width: 619, height: 412 },
+    image: { src: imageAssets.kneeOsteoarthritis, alt: "Medical illustration of advanced osteoarthritis in the knee" },
     references: [
       { title: "Staying Active As You Age", publisher: "AAOS OrthoInfo", url: "https://orthoinfo.aaos.org/en/staying-healthy/staying-active-as-you-age/" },
       { title: "Physical activity guidelines for older adults", publisher: "NHS", url: "https://www.nhs.uk/live-well/exercise/physical-activity-guidelines-older-adults/" },
@@ -85,7 +88,7 @@ export const patientGuides: PatientGuide[] = [
       { label: "Choose comfortable bedding", text: "Mattress and pillow preferences vary. Choose bedding that supports comfortable sleep without aggravating symptoms." },
       { label: "Seek an assessment when needed", text: "A professional assessment can help identify the cause of persistent pain and guide appropriate care." },
     ],
-    image: { src: "/assets/images/conference-presentation.jpg", alt: "Dr. Aayush Shrestha presenting on spine health", width: 1600, height: 1066 },
+    image: { src: imageAssets.conferencePresentation, alt: "Dr. Aayush Shrestha presenting on spine health" },
     references: [
       { title: "Spine Conditioning Program", publisher: "AAOS OrthoInfo", url: "https://orthoinfo.aaos.org/en/recovery/spine-conditioning-program/" },
       { title: "Low Back Pain", publisher: "AAOS OrthoInfo", url: "https://orthoinfo.aaos.org/en/diseases--conditions/low-back-pain/" },
@@ -107,7 +110,7 @@ export const patientGuides: PatientGuide[] = [
       { label: "Myth", text: "Every spine operation carries the same complication risk." },
       { label: "Fact", text: "Risk varies by operation, diagnosis and individual health. Rehabilitation and follow-up are important parts of recovery." },
     ],
-    image: { src: "/assets/images/hero-conference.jpg", alt: "Dr. Aayush Shrestha at a medical conference", width: 3057, height: 2081 },
+    image: { src: imageAssets.heroConference, alt: "Dr. Aayush Shrestha at a medical conference" },
     references: [
       { title: "Preparing for Low Back Surgery", publisher: "AAOS OrthoInfo", url: "https://orthoinfo.aaos.org/en/treatment/preparing-for-low-back-surgery/" },
       { title: "Spinal Fusion", publisher: "AAOS OrthoInfo", url: "https://orthoinfo.aaos.org/en/treatment/spinal-fusion/" },
@@ -131,7 +134,7 @@ export const patientGuides: PatientGuide[] = [
       { label: "Respond to pain", text: "Reduce or modify activity if pain is significant, and seek assessment for persistent swelling, instability or loss of function." },
       { label: "Lift safely", text: "Use a stable stance, keep loads close and avoid twisting under heavy load." },
     ],
-    image: { src: "/assets/images/knee-pain.jpg", alt: "Person supporting a painful knee", width: 1200, height: 675 },
+    image: { src: imageAssets.kneePain, alt: "Person supporting a painful knee" },
     references: [{ title: "Knee Conditioning Program", publisher: "AAOS OrthoInfo", url: "https://orthoinfo.aaos.org/en/recovery/knee-conditioning-program/" }],
   },
   {
@@ -153,7 +156,7 @@ export const patientGuides: PatientGuide[] = [
       { label: "Rest from painful loading", text: "Do not train through sharp pain or substantial loss of function." },
     ],
     closing: "Seek urgent care after a suspected fracture, dislocation, severe head or spine injury, or rapidly worsening symptoms.",
-    image: { src: "/assets/images/foot-ankle.jpg", alt: "Person supporting a painful foot after exercise", width: 617, height: 349 },
+    image: { src: imageAssets.footAnkle, alt: "Person supporting a painful heel and ankle" },
     references: [{ title: "Muscle aches", publisher: "MedlinePlus", url: "https://medlineplus.gov/ency/article/003178.htm" }],
   },
   {
@@ -173,7 +176,7 @@ export const patientGuides: PatientGuide[] = [
       { label: "Raise phones and tablets", text: "Bring devices closer to eye level and change position regularly." },
     ],
     closing: "Seek assessment if neck pain persists, follows significant trauma or occurs with progressive weakness, numbness, balance difficulty or loss of hand coordination.",
-    image: { src: "/assets/images/neck-nerve-pain.jpeg", alt: "Illustration of cervical nerve pain", width: 1440, height: 1080 },
+    image: { src: imageAssets.healthyNeck, alt: "Woman gently stretching her neck at home" },
     references: [
       { title: "Neck pain", publisher: "NHS", url: "https://www.nhs.uk/conditions/neck-pain-and-stiff-neck/" },
       { title: "Spine Conditioning Program", publisher: "AAOS OrthoInfo", url: "https://orthoinfo.aaos.org/en/recovery/spine-conditioning-program/" },
@@ -199,7 +202,7 @@ export const patientGuides: PatientGuide[] = [
       { label: "Avoid unapproved products", text: "Do not apply creams, powders or ointments unless instructed." },
     ],
     closing: "Seek urgent medical advice if the wound opens, bleeding does not stop, infection signs are worsening or you become systemically unwell.",
-    image: { src: "/assets/images/surgery.jpg", alt: "Surgical team at work", width: 1080, height: 608 },
+    image: { src: imageAssets.surgery, alt: "Surgical team at work" },
     references: [
       { title: "Surgical wound care - closed", publisher: "MedlinePlus", url: "https://medlineplus.gov/ency/patientinstructions/000738.htm" },
       { title: "Surgical wound care - open", publisher: "MedlinePlus", url: "https://medlineplus.gov/ency/patientinstructions/000040.htm" },
@@ -223,7 +226,7 @@ export const patientGuides: PatientGuide[] = [
       { label: "Myth", text: "Neck pain is always a serious problem." },
       { label: "Fact", text: "Many episodes improve, but trauma, fever, progressive neurological symptoms or severe unremitting pain require assessment." },
     ],
-    image: { src: "/assets/images/neck-nerve-pain.jpeg", alt: "Illustration of pain from the neck into the arm", width: 1440, height: 1080 },
+    image: { src: imageAssets.neckPainMyths, alt: "Clinician reviewing cervical spine X-rays" },
     references: [
       { title: "Neck Pain", publisher: "AAOS OrthoInfo", url: "https://orthoinfo.aaos.org/en/diseases--conditions/neck-pain/" },
       { title: "Neck pain", publisher: "NHS", url: "https://www.nhs.uk/conditions/neck-pain-and-stiff-neck/" },
@@ -248,7 +251,7 @@ export const patientGuides: PatientGuide[] = [
       { label: "Fact", text: "Age-related disc changes, loading, smoking, body weight, genetics and some injuries can influence risk." },
     ],
     closing: "Seek emergency assessment for new bladder or bowel dysfunction, numbness around the saddle area, or rapidly worsening weakness.",
-    image: { src: "/assets/images/neck-nerve-pain.jpeg", alt: "Illustration of cervical nerve compression", width: 1440, height: 1080 },
+    image: { src: imageAssets.discHerniation, alt: "Medical illustration comparing a herniated disc with a normal disc" },
     references: [
       { title: "Herniated Disk in the Lower Back", publisher: "AAOS OrthoInfo", url: "https://orthoinfo.aaos.org/en/diseases--conditions/herniated-disk-in-the-lower-back/" },
       { title: "Slipped disc", publisher: "NHS", url: "https://www.nhs.uk/conditions/slipped-disc/" },
@@ -269,7 +272,7 @@ export const patientGuides: PatientGuide[] = [
       { label: "Maintain general health", text: "Sleep, weight management, smoking cessation and regular activity can influence musculoskeletal health." },
     ],
     closing: "Seek emergency assessment for new bladder or bowel dysfunction, saddle numbness, weakness in both legs, major trauma or rapidly worsening neurological symptoms. Seek medical advice for fever, unexplained weight loss, night pain or persistent symptoms.",
-    image: { src: "/assets/images/conference-presentation.jpg", alt: "Dr. Aayush Shrestha presenting on spinal surgery", width: 1600, height: 1066 },
+    image: { src: imageAssets.conferencePresentation, alt: "Dr. Aayush Shrestha presenting on spinal surgery" },
     references: [
       { title: "Low back pain", publisher: "World Health Organization", url: "https://www.who.int/news-room/fact-sheets/detail/low-back-pain" },
       { title: "Back pain", publisher: "NHS", url: "https://www.nhs.uk/conditions/back-pain/" },
@@ -295,7 +298,7 @@ export const patientGuides: PatientGuide[] = [
       { label: "Emergency assessment", text: "New bladder or bowel dysfunction, numbness around the saddle area or rapidly worsening weakness requires emergency assessment." },
     ],
     closing: "Do not wait for a routine appointment when emergency warning signs are present. Attend the nearest emergency department or contact local emergency services.",
-    image: { src: "/assets/images/neck-nerve-pain.jpeg", alt: "Illustration of cervical nerve pain", width: 1440, height: 1080 },
+    image: { src: imageAssets.neckNervePain, alt: "Illustration of cervical nerve pain" },
     references: [
       { title: "Cervical Radiculopathy (Pinched Nerve)", publisher: "AAOS OrthoInfo", url: "https://orthoinfo.aaos.org/en/diseases--conditions/cervical-radiculopathy-pinched-nerve/" },
       { title: "Cervical Spondylotic Myelopathy (Spinal Cord Compression)", publisher: "AAOS OrthoInfo", url: "https://orthoinfo.aaos.org/en/diseases--conditions/cervical-spondylotic-myelopathy-spinal-cord-compression/" },

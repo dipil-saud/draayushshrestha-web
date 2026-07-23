@@ -1,6 +1,6 @@
 ---
 interface Props {
-  active: "home" | "about" | "conditions" | "treatments" | "patient-guides" | "contact";
+  active: "home" | "about" | "conditions" | "treatments" | "patient-guides" | "contact" | "none";
 }
 
 const { active } = Astro.props;
@@ -32,12 +32,13 @@ const links = [
       </nav>
       <div class="nav__actions">
         <a class="btn btn--primary" href="/contact.html">Book appointment</a>
-        <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-menu-toggle>Menu</button>
+        <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>Menu</button>
       </div>
     </div>
   </div>
-  <nav class="mobile-menu" aria-label="Mobile navigation" data-mobile-menu>
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" data-mobile-menu>
     <div class="shell mobile-menu__inner">
+      <a class="mobile-menu__appointment" href="/contact.html">Book appointment</a>
       {links.map((link) => <a href={link.href} aria-current={active === link.key ? "page" : undefined}>{link.label}</a>)}
     </div>
   </nav>

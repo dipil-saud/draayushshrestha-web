@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import ResponsiveImage from "../components/ResponsiveImage.astro";
 import { guidePath, patientGuides } from "../data/patient-guides";
 
 const structuredData = [{
@@ -45,7 +46,7 @@ const structuredData = [{
       <div class="guide-library">
         {patientGuides.map((guide) => (
           <article class="guide-post" id={guide.id} data-guide-card data-category={guide.category}>
-            <figure class="guide-post__media"><img src={guide.image.src} alt={guide.image.alt} width={guide.image.width} height={guide.image.height} loading="lazy" /></figure>
+            <figure class="guide-post__media"><ResponsiveImage src={guide.image.src} alt={guide.image.alt} sizes="(min-width: 60rem) 30vw, (min-width: 40rem) 45vw, calc(100vw - 2rem)" /></figure>
             <header><p class="kicker">{guide.category}</p><h2>{guide.title}</h2><p><time datetime={guide.updated}>Updated July 22, 2026</time></p></header>
             <a class="guide-read-more" href={guidePath(guide)}><span>Read article</span><span aria-hidden="true">→</span></a>
           </article>

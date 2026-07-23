@@ -28,7 +28,16 @@ mobileMenu?.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", () => {
     mobileMenu.classList.remove("is-open");
     menuToggle?.setAttribute("aria-expanded", "false");
+    menuToggle?.setAttribute("aria-label", "Open menu");
   });
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key !== "Escape" || !mobileMenu?.classList.contains("is-open")) return;
+  mobileMenu.classList.remove("is-open");
+  menuToggle?.setAttribute("aria-expanded", "false");
+  menuToggle?.setAttribute("aria-label", "Open menu");
+  menuToggle?.focus();
 });
 
 document.querySelectorAll("[data-year]").forEach((node) => {
