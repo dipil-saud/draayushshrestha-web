@@ -245,8 +245,8 @@ main { padding-block-start: calc(var(--banner-h) + var(--nav-h)); }
 .split + .split { margin-block-start: var(--space-3xl); }
 .split__copy { display: grid; gap: var(--space-lg); }
 .split__media { min-width: 0; }
-.split__media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
-.split__media--clinical img { object-position: center 20%; }
+.split__media img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+.split__media--clinical img { aspect-ratio: 147 / 100; object-position: center 20%; }
 .split__media--portrait img { aspect-ratio: 4 / 5; object-position: center 0%; }
 .about-intro .split__media img { height: clamp(18rem, 34vw, 30rem); aspect-ratio: auto; }
 .home-practice .split__media img { max-height: 22rem; aspect-ratio: 16 / 9; }
