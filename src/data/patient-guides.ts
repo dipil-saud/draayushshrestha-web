@@ -66,7 +66,7 @@ export const patientGuides: PatientGuide[] = [
       { label: "Yoga and balance work", text: "Appropriate exercises can support flexibility, balance and body control." },
     ],
     closing: "Stop if exercise causes chest pain, severe shortness of breath, dizziness or sudden pain. Seek individual advice if you have symptoms, a chronic condition, recent surgery or uncertainty about safe intensity.",
-    image: { src: imageAssets.kneeOsteoarthritis, alt: "Medical illustration of advanced osteoarthritis in the knee" },
+    image: { src: imageAssets.exercisesOver50, alt: "Older adults performing supervised resistance exercises" },
     references: [
       { title: "Staying Active As You Age", publisher: "AAOS OrthoInfo", url: "https://orthoinfo.aaos.org/en/staying-healthy/staying-active-as-you-age/" },
       { title: "Physical activity guidelines for older adults", publisher: "NHS", url: "https://www.nhs.uk/live-well/exercise/physical-activity-guidelines-older-adults/" },
@@ -88,7 +88,7 @@ export const patientGuides: PatientGuide[] = [
       { label: "Choose comfortable bedding", text: "Mattress and pillow preferences vary. Choose bedding that supports comfortable sleep without aggravating symptoms." },
       { label: "Seek an assessment when needed", text: "A professional assessment can help identify the cause of persistent pain and guide appropriate care." },
     ],
-    image: { src: imageAssets.conferencePresentation, alt: "Dr. Aayush Shrestha presenting on spine health" },
+    image: { src: imageAssets.healthySpine, alt: "Woman performing a bird-dog trunk stability exercise" },
     references: [
       { title: "Spine Conditioning Program", publisher: "AAOS OrthoInfo", url: "https://orthoinfo.aaos.org/en/recovery/spine-conditioning-program/" },
       { title: "Low Back Pain", publisher: "AAOS OrthoInfo", url: "https://orthoinfo.aaos.org/en/diseases--conditions/low-back-pain/" },
@@ -110,7 +110,7 @@ export const patientGuides: PatientGuide[] = [
       { label: "Myth", text: "Every spine operation carries the same complication risk." },
       { label: "Fact", text: "Risk varies by operation, diagnosis and individual health. Rehabilitation and follow-up are important parts of recovery." },
     ],
-    image: { src: imageAssets.heroConference, alt: "Dr. Aayush Shrestha at a medical conference" },
+    image: { src: imageAssets.spineSurgeryMyths, alt: "Surgical team performing a spinal operation" },
     references: [
       { title: "Preparing for Low Back Surgery", publisher: "AAOS OrthoInfo", url: "https://orthoinfo.aaos.org/en/treatment/preparing-for-low-back-surgery/" },
       { title: "Spinal Fusion", publisher: "AAOS OrthoInfo", url: "https://orthoinfo.aaos.org/en/treatment/spinal-fusion/" },
@@ -202,7 +202,7 @@ export const patientGuides: PatientGuide[] = [
       { label: "Avoid unapproved products", text: "Do not apply creams, powders or ointments unless instructed." },
     ],
     closing: "Seek urgent medical advice if the wound opens, bleeding does not stop, infection signs are worsening or you become systemically unwell.",
-    image: { src: imageAssets.surgery, alt: "Surgical team at work" },
+    image: { src: imageAssets.surgicalWoundCare, alt: "Clean gauze dressing material for wound care" },
     references: [
       { title: "Surgical wound care - closed", publisher: "MedlinePlus", url: "https://medlineplus.gov/ency/patientinstructions/000738.htm" },
       { title: "Surgical wound care - open", publisher: "MedlinePlus", url: "https://medlineplus.gov/ency/patientinstructions/000040.htm" },
@@ -226,7 +226,7 @@ export const patientGuides: PatientGuide[] = [
       { label: "Myth", text: "Neck pain is always a serious problem." },
       { label: "Fact", text: "Many episodes improve, but trauma, fever, progressive neurological symptoms or severe unremitting pain require assessment." },
     ],
-    image: { src: imageAssets.neckPainMyths, alt: "Clinician reviewing cervical spine X-rays" },
+    image: { src: imageAssets.neckPainMyths, alt: "Woman supporting her neck while working at a laptop" },
     references: [
       { title: "Neck Pain", publisher: "AAOS OrthoInfo", url: "https://orthoinfo.aaos.org/en/diseases--conditions/neck-pain/" },
       { title: "Neck pain", publisher: "NHS", url: "https://www.nhs.uk/conditions/neck-pain-and-stiff-neck/" },
@@ -272,7 +272,7 @@ export const patientGuides: PatientGuide[] = [
       { label: "Maintain general health", text: "Sleep, weight management, smoking cessation and regular activity can influence musculoskeletal health." },
     ],
     closing: "Seek emergency assessment for new bladder or bowel dysfunction, saddle numbness, weakness in both legs, major trauma or rapidly worsening neurological symptoms. Seek medical advice for fever, unexplained weight loss, night pain or persistent symptoms.",
-    image: { src: imageAssets.conferencePresentation, alt: "Dr. Aayush Shrestha presenting on spinal surgery" },
+    image: { src: imageAssets.backPain, alt: "Woman experiencing back discomfort while working at a desk" },
     references: [
       { title: "Low back pain", publisher: "World Health Organization", url: "https://www.who.int/news-room/fact-sheets/detail/low-back-pain" },
       { title: "Back pain", publisher: "NHS", url: "https://www.nhs.uk/conditions/back-pain/" },
@@ -298,7 +298,7 @@ export const patientGuides: PatientGuide[] = [
       { label: "Emergency assessment", text: "New bladder or bowel dysfunction, numbness around the saddle area or rapidly worsening weakness requires emergency assessment." },
     ],
     closing: "Do not wait for a routine appointment when emergency warning signs are present. Attend the nearest emergency department or contact local emergency services.",
-    image: { src: imageAssets.neckNervePain, alt: "Illustration of cervical nerve pain" },
+    image: { src: imageAssets.nerveCompression, alt: "Medical illustration of a herniated cervical disc compressing a nerve" },
     references: [
       { title: "Cervical Radiculopathy (Pinched Nerve)", publisher: "AAOS OrthoInfo", url: "https://orthoinfo.aaos.org/en/diseases--conditions/cervical-radiculopathy-pinched-nerve/" },
       { title: "Cervical Spondylotic Myelopathy (Spinal Cord Compression)", publisher: "AAOS OrthoInfo", url: "https://orthoinfo.aaos.org/en/diseases--conditions/cervical-spondylotic-myelopathy-spinal-cord-compression/" },
