@@ -1,4 +1,5 @@
 import backPain from "../assets/images/back-pain.webp";
+import clinicalFocus from "../assets/images/clinical-focus.webp";
 import conferencePresentation from "../assets/images/conference-presentation.webp";
 import discHerniation from "../assets/images/disc-herniation.webp";
 import doctorStudio from "../assets/images/doctor-studio.webp";
@@ -25,6 +26,7 @@ import trauma from "../assets/images/trauma.webp";
 
 export const imageAssets = {
   backPain,
+  clinicalFocus,
   conferencePresentation,
   discHerniation,
   doctorStudio,

@@ -1,0 +1,107 @@
+---
+const faqs = [
+  {
+    question: "Where is the clinic located?",
+    answer: "Pacific Multispeciality Clinic, Kupondole, Lalitpur.",
+  },
+  {
+    question: "When will the doctor be available?",
+    answer: "Monday to Friday, after 5pm.",
+  },
+  {
+    question: "Can we do an online consultation?",
+    answer: "Yes, that is possible.",
+  },
+  {
+    question: "What are the problems treated?",
+    answer: "Orthopaedic surgery, spine surgery, non-operative treatment and patient education and awareness.",
+  },
+  {
+    question: "How do I book an appointment?",
+    answer: "Call or message the clinic, or use the contact page. Appointment times and clinic location are listed on the contact page.",
+  },
+  {
+    question: "Do I need a referral?",
+    answer: "A referral is not required for an initial consultation. If imaging, prior notes or insurance paperwork are needed, the clinic will let you know in advance.",
+  },
+];
+
+const heading = "Frequently asked questions";
+const intro =
+  "Quick answers to common questions about the clinic, appointments and the conditions treated.";
+const idPrefix = "faq";
+---
+
+<section class="shell faq" aria-labelledby={`${idPrefix}-heading`}>
+  <header class="faq__head">
+    <h2 id={`${idPrefix}-heading`}>{heading}</h2>
+    <p>{intro}</p>
+  </header>
+  <div class="faq__list">
+    {faqs.map((faq, index) => (
+      <details class="faq__item" name={idPrefix} open={index === 0}>
+        <summary>
+          <span>{faq.question}</span>
+          <span aria-hidden="true" class="faq__icon">+</span>
+        </summary>
+        <div class="faq__answer">
+          <p>{faq.answer}</p>
+        </div>
+      </details>
+    ))}
+  </div>
+</section>
+
+<style>
+  .faq {
+    display: grid;
+    gap: var(--space-xl);
+    padding-block: var(--space-2xl);
+  }
+  .faq__head {
+    display: grid;
+    gap: var(--space-sm);
+    max-width: 42rem;
+  }
+  .faq__head p {
+    color: var(--color-muted);
+    font-size: var(--text-md);
+  }
+  .faq__list {
+    display: grid;
+    border: var(--rule-width) solid var(--color-rule);
+    background: var(--color-rule);
+    gap: var(--rule-width);
+  }
+  .faq__item {
+    background: var(--color-paper);
+  }
+  .faq__item summary {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--space-md);
+    min-height: 3.5rem;
+    padding: var(--space-md) var(--space-lg);
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+  }
+  .faq__item summary::-webkit-details-marker {
+    display: none;
+  }
+  .faq__icon {
+    color: var(--color-accent-dark);
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    line-height: 1;
+  }
+  .faq__item[open] .faq__icon {
+    transform: rotate(45deg);
+  }
+  .faq__answer {
+    padding: 0 var(--space-lg) var(--space-lg);
+    color: var(--color-muted);
+    max-width: 48rem;
+  }
+</style>
