@@ -1,0 +1,14 @@
+{
+  "name": "Dr. Aayush Shrestha",
+  "short_name": "Dr. Aayush",
+  "description": "Orthopaedic and spine surgeon — patient guides, treatments, and appointments.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#1d4574",
+  "theme_color": "#1d4574",
+  "icons": [
+    { "src": "/assets/android-chrome-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/favicon-32.png", "sizes": "32x32", "type": "image/png" }
+  ]
+}
