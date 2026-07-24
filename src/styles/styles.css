@@ -7,23 +7,22 @@
 :root {
   --font-display: "Newsreader", ui-serif, serif;
   --font-body: "IBM Plex Sans", ui-sans-serif, sans-serif;
-  --color-paper: oklch(98% 0.005 230);
-  --color-paper-2: oklch(95% 0.01 230);
-  --color-surface: oklch(100% 0.004 230);
-  --color-ink: oklch(22% 0.04 235);
-  --color-body: oklch(35% 0.03 235);
-  --color-muted: oklch(48% 0.025 235);
-  --color-rule: oklch(84% 0.015 230);
-  --color-accent: oklch(48% 0.13 225);
-  --color-accent-dark: oklch(33% 0.09 230);
-  --color-accent-ink: oklch(98% 0.005 230);
-  --color-dark: oklch(20% 0.045 238);
-  --color-dark-2: oklch(27% 0.055 238);
-  --color-dark-ink: oklch(95% 0.01 230);
-  --color-focus: oklch(55% 0.16 225);
-  --color-focus-on-dark: oklch(82% 0.13 225);
-  --color-accent-on-dark: oklch(78% 0.07 228);
-  --color-shadow: oklch(20% 0.04 235 / 0.1);
+  --color-paper: oklch(98% 0.008 175);
+  --color-paper-2: oklch(94% 0.014 175);
+  --color-surface: oklch(100% 0.004 175);
+  --color-ink: oklch(20% 0.026 190);
+  --color-body: oklch(35% 0.022 190);
+  --color-muted: oklch(44% 0.022 190);
+  --color-rule: oklch(84% 0.018 175);
+  --color-accent: oklch(43% 0.105 174);
+  --color-accent-dark: oklch(31% 0.075 180);
+  --color-accent-ink: oklch(98% 0.008 175);
+  --color-dark: oklch(18% 0.034 190);
+  --color-dark-2: oklch(25% 0.04 188);
+  --color-dark-ink: oklch(95% 0.01 175);
+  --color-focus: oklch(48% 0.145 173);
+  --color-focus-on-dark: oklch(78% 0.12 173);
+  --color-shadow: oklch(18% 0.03 190 / 0.09);
   --space-2xs: 0.25rem;
   --space-xs: 0.5rem;
   --space-sm: 0.75rem;
@@ -280,7 +279,7 @@ main { padding-block-start: calc(var(--banner-h) + var(--nav-h)); }
 .home-treatments h3 { font-size: var(--text-xl); }
 .home-treatments ul { display: grid; gap: var(--rule-width); border: var(--rule-width) solid var(--color-dark-2); background: var(--color-dark-2); }
 .home-treatments li { min-width: 0; padding: var(--space-md); background: var(--color-dark); color: var(--color-rule); }
-.home-treatments .text-link { color: var(--color-accent-on-dark); }
+.home-treatments .text-link { color: var(--color-focus-on-dark); }
 .quote { display: grid; gap: var(--space-lg); padding-block: var(--space-2xl); }
 .patient-perspective .kicker { font-size: var(--text-label); }
 .quote blockquote { margin: 0; max-width: 34ch; color: var(--color-ink); font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3.25rem); font-style: normal; line-height: 1.15; }
