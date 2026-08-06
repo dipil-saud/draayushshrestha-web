@@ -147,6 +147,7 @@ html:not(.js) main { padding-block-start: 0; }
 .notice p > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .notice a { flex: 0 0 auto; font-weight: 600; white-space: nowrap; }
 .notice__close {
+  display: none;
   flex: 0 0 2.75rem;
   width: 2.75rem;
   height: 2.75rem;
@@ -468,6 +469,7 @@ main { padding-block-start: calc(var(--banner-h) + var(--nav-h)); }
 
 @media (min-width: 40rem) {
   .shell { width: min(100% - 3rem, 78rem); }
+  .notice__close { display: flex; }
   .nav__actions .btn { display: inline-flex; }
   .hero__actions { flex-direction: row; align-items: center; flex-wrap: wrap; }
   .hero__actions .btn { width: fit-content; }
