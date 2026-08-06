@@ -43,8 +43,8 @@ const sections = [
 const structuredData = [{
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  "@id": "https://draayushshrestha.com/treatments.html#webpage",
-  url: "https://draayushshrestha.com/treatments.html",
+  "@id": "https://draayushshrestha.com/treatments#webpage",
+  url: "https://draayushshrestha.com/treatments",
   name: "Orthopaedic and Spine Treatments",
   description: "Non-operative treatment, spine surgery and orthopaedic surgery services provided by Dr. Aayush Shrestha in Nepal.",
   mainEntity: {
@@ -53,7 +53,7 @@ const structuredData = [{
       "@type": "ListItem",
       position: index + 1,
       name: section.name,
-      url: `https://draayushshrestha.com/treatments.html#${section.id}`,
+      url: `https://draayushshrestha.com/treatments#${section.id}`,
     })),
   },
 }];
@@ -62,7 +62,7 @@ const structuredData = [{
 <BaseLayout
   title="Orthopaedic & Spine Treatments | Dr. Aayush Shrestha Nepal"
   description="Explore non-operative care, spine surgery, fracture care, sports medicine and orthopaedic surgery provided by Dr. Aayush Shrestha in Nepal."
-  canonical="https://draayushshrestha.com/treatments.html"
+  canonical="https://draayushshrestha.com/treatments"
   active="treatments"
   structuredData={structuredData}
 >
@@ -112,7 +112,7 @@ const structuredData = [{
     <section class="section treatment-next">
       <div class="shell treatment-next__grid">
         <div><h2>Assessment comes first</h2></div>
-        <div><p>The services listed here do not mean that every option is suitable for every patient. A consultation is needed to establish a diagnosis and discuss benefits, limitations, alternatives and expected recovery.</p><div class="treatment-next__actions"><a class="btn btn--primary" href="contact.html">Book an appointment</a><a class="text-link" href="conditions.html">Browse conditions</a></div></div>
+        <div><p>The services listed here do not mean that every option is suitable for every patient. A consultation is needed to establish a diagnosis and discuss benefits, limitations, alternatives and expected recovery.</p><div class="treatment-next__actions"><a class="btn btn--primary" href="contact">Book an appointment</a><a class="text-link" href="conditions">Browse conditions</a></div></div>
       </div>
     </section>
   </main>

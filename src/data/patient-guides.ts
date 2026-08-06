@@ -308,5 +308,5 @@ export const patientGuides: PatientGuide[] = [
 ];
 
 export function guidePath(guide: PatientGuide): string {
-  return `/patient-guides/${guide.id}.html`;
+  return `/patient-guides/${guide.id}`;
 }
