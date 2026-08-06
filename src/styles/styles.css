@@ -428,6 +428,7 @@ main { padding-block-start: calc(var(--banner-h) + var(--nav-h)); }
 .contact-actions { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--rule-width); margin-block-start: var(--space-lg); border: var(--rule-width) solid var(--color-rule); background: var(--color-rule); }
 .contact-action { display: grid; gap: var(--space-xs); min-width: 0; padding: var(--space-md); background: var(--color-paper); text-decoration: none; }
 .contact-action span { color: var(--color-muted); font-size: var(--text-sm); }
+.contact-action__icon { width: 0.9em; height: 0.9em; margin-inline-end: 0.35em; vertical-align: -0.125em; fill: var(--color-accent); }
 .contact-action strong { overflow-wrap: anywhere; }
 .contact-utility { display: flex; flex-wrap: wrap; gap: var(--space-sm) var(--space-xl); padding-block-start: var(--space-lg); }
 .contact-utility a { color: var(--color-muted); font-size: var(--text-sm); white-space: nowrap; }
