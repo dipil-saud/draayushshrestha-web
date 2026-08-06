@@ -10,9 +10,7 @@ import footAnkle from "../assets/images/foot-ankle.webp";
 import handWrist from "../assets/images/hand-wrist.webp";
 import healthyNeck from "../assets/images/healthy-neck.webp";
 import healthySpine from "../assets/images/healthy-spine.webp";
-import heroConference from "../assets/images/hero-conference.webp";
 import hipPain from "../assets/images/hip-pain.webp";
-import kneeOsteoarthritis from "../assets/images/knee-osteoarthritis.webp";
 import kneePain from "../assets/images/knee-pain.webp";
 import neckNervePain from "../assets/images/neck-nerve-pain.webp";
 import neckPainMyths from "../assets/images/neck-pain-myths.webp";
@@ -37,9 +35,7 @@ export const imageAssets = {
   handWrist,
   healthyNeck,
   healthySpine,
-  heroConference,
   hipPain,
-  kneeOsteoarthritis,
   kneePain,
   neckNervePain,
   neckPainMyths,
