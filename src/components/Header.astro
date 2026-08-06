@@ -39,8 +39,10 @@ const links = [
       </div>
     </div>
   </div>
+  <div class="mobile-menu__overlay" data-mobile-overlay aria-hidden="true"></div>
   <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" data-mobile-menu>
-    <div class="shell mobile-menu__inner">
+    <div class="mobile-menu__inner">
+      <button class="mobile-menu__close" type="button" aria-label="Close menu" data-mobile-close>×</button>
       <a class="mobile-menu__appointment" href="/contact">Book appointment</a>
       {links.map((link) => <a href={link.href} aria-current={active === link.key ? "page" : undefined}>{link.label}</a>)}
     </div>

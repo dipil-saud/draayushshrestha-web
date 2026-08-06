@@ -2,6 +2,8 @@ const header = document.querySelector("[data-header]");
 const bannerClose = document.querySelector("[data-banner-close]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const mobileMenu = document.querySelector("[data-mobile-menu]");
+const mobileOverlay = document.querySelector("[data-mobile-overlay]");
+const mobileClose = document.querySelector("[data-mobile-close]");
 
 let lastY = window.scrollY;
 
@@ -18,25 +20,31 @@ bannerClose?.addEventListener("click", () => {
   document.documentElement.style.setProperty("--banner-h", "0px");
 });
 
+const setMenu = (open) => {
+  if (!mobileMenu) return;
+  mobileMenu.classList.toggle("is-open", open);
+  mobileOverlay?.classList.toggle("is-open", open);
+  document.body.classList.toggle("is-locked", open);
+  menuToggle?.setAttribute("aria-expanded", String(open));
+  menuToggle?.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+};
+
 menuToggle?.addEventListener("click", () => {
-  const open = mobileMenu?.classList.toggle("is-open") ?? false;
-  menuToggle.setAttribute("aria-expanded", String(open));
-  menuToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  const open = !mobileMenu?.classList.contains("is-open");
+  setMenu(open);
 });
 
+mobileClose?.addEventListener("click", () => setMenu(false));
+
+mobileOverlay?.addEventListener("click", () => setMenu(false));
+
 mobileMenu?.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => {
-    mobileMenu.classList.remove("is-open");
-    menuToggle?.setAttribute("aria-expanded", "false");
-    menuToggle?.setAttribute("aria-label", "Open menu");
-  });
+  link.addEventListener("click", () => setMenu(false));
 });
 
 document.addEventListener("keydown", (event) => {
   if (event.key !== "Escape" || !mobileMenu?.classList.contains("is-open")) return;
-  mobileMenu.classList.remove("is-open");
-  menuToggle?.setAttribute("aria-expanded", "false");
-  menuToggle?.setAttribute("aria-label", "Open menu");
+  setMenu(false);
   menuToggle?.focus();
 });
 
