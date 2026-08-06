@@ -1,28 +1,28 @@
 /* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V4
  * Hallmark · genre: clinical-editorial · macrostructure: Split Studio · theme: Studio
- * enrichment: existing photography · nav: N12 banner-retract · footer: Ft1 mast-headed · contrast: pass (40–41)
- * slop: pass (42–49) · mobile: pass (34, 49, 50–57)
+ * palette: canon clinical-navy (oklch ~255) on cool white · peer: Mayo Clinic
+ * contrast: pass (navy/paper 9.8:1, ink/paper 11.9:1, AAA-adjacent) · slop: pass · mobile: pass
  * audience: local/international patients + referring clinicians · use: professional credibility
  */
 :root {
   --font-display: "Newsreader", ui-serif, serif;
   --font-body: "IBM Plex Sans", ui-sans-serif, sans-serif;
-  --color-paper: oklch(98% 0.008 175);
-  --color-paper-2: oklch(94% 0.014 175);
-  --color-surface: oklch(100% 0.004 175);
-  --color-ink: oklch(20% 0.026 190);
-  --color-body: oklch(35% 0.022 190);
-  --color-muted: oklch(44% 0.022 190);
-  --color-rule: oklch(84% 0.018 175);
-  --color-accent: oklch(43% 0.105 174);
-  --color-accent-dark: oklch(31% 0.075 180);
-  --color-accent-ink: oklch(98% 0.008 175);
-  --color-dark: oklch(18% 0.034 190);
-  --color-dark-2: oklch(25% 0.04 188);
-  --color-dark-ink: oklch(95% 0.01 175);
-  --color-focus: oklch(48% 0.145 173);
-  --color-focus-on-dark: oklch(78% 0.12 173);
-  --color-shadow: oklch(18% 0.03 190 / 0.09);
+  --color-paper: oklch(99% 0.003 250);
+  --color-paper-2: oklch(96% 0.006 250);
+  --color-surface: oklch(100% 0 0);
+  --color-ink: oklch(20% 0.02 250);
+  --color-body: oklch(33% 0.015 250);
+  --color-muted: oklch(44% 0.015 250);
+  --color-rule: oklch(88% 0.008 250);
+  --color-accent: oklch(38% 0.14 255);
+  --color-accent-dark: oklch(30% 0.12 258);
+  --color-accent-ink: oklch(99% 0.003 250);
+  --color-dark: oklch(20% 0.025 255);
+  --color-dark-2: oklch(26% 0.03 255);
+  --color-dark-ink: oklch(96% 0.008 250);
+  --color-focus: oklch(55% 0.18 252);
+  --color-focus-on-dark: oklch(78% 0.13 250);
+  --color-shadow: oklch(20% 0.025 255 / 0.1);
   --space-2xs: 0.25rem;
   --space-xs: 0.5rem;
   --space-sm: 0.75rem;

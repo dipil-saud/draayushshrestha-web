@@ -52,7 +52,7 @@ const {
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <meta name="theme-color" content="#003c32" />
+    <meta name="theme-color" content="#002968" />
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content="Dr. Aayush Shrestha" />
     <meta property="og:title" content={title} />
@@ -70,6 +70,14 @@ const {
     {structuredData.map((data) => <script is:inline type="application/ld+json" set:html={JSON.stringify(data)} />)}
   </head>
   <body>
+<!--
+THESIS: A conventional clinical-credibility site in the Mayo register — clean cool white, deep clinical navy, serif-meets-sans editorial — proving a Nepal orthopaedic and spine surgeon's expertise through a browsable condition library and reachable care. Refuses the warm-teal editorial accent and any expressive arts-and-crafts world.
+OWN-WORLD: cool near-white ground, warm-neutral near-black ink, one committed clinical-navy accent (oklch 38% .14 255) with a deeper navy for text-on-light and the dark-section ground; hairline cool-gray rules; Newsreader serif display + IBM Plex Sans body. Restrained ground, committed accent in banner, CTA, markers, and dark zones.
+STORY: a patient or clinician lands, recognizes medical authority, locates their condition in the body-region taxonomy, and reaches the clinic by phone or WhatsApp.
+FIRST VIEWPORT: portrait-led hero, the surgeon's name in serif display, a single primary "Book appointment" action in navy, a credential strip; the accent reads clinical blue, not teal.
+FORM: canon (category standard, peer Mayo Clinic); the roll's assigned Wayfinding/saffron world (seed 8e2f7e28) was refused by the user for the conventional door.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+-->
     <a class="skip-link" href="#main">Skip to content</a>
     <Header active={active} />
     <slot />
