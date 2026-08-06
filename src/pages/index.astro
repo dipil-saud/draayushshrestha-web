@@ -34,6 +34,29 @@ const structuredData = [
   },
   {
     "@context": "https://schema.org",
+    "@type": "MedicalClinic",
+    "@id": "https://draayushshrestha.com/#pacific-clinic",
+    name: "Pacific Multispeciality Clinic",
+    url: "https://draayushshrestha.com/contact",
+    telephone: "+977-1-5424290",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Kupondole",
+      addressLocality: "Lalitpur",
+      addressCountry: "NP",
+    },
+    employee: { "@id": "https://draayushshrestha.com/#doctor" },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.7",
+      reviewCount: "12",
+      bestRating: "5",
+      worstRating: "1",
+    },
+    sameAs: ["https://share.google/9Kj5c89U9UB5Ftcmv"],
+  },
+  {
+    "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": "https://draayushshrestha.com/#website",
     url: "https://draayushshrestha.com/",
@@ -55,7 +78,7 @@ const structuredData = [
   <main id="main">
     <section class="hero"><div class="shell hero__grid"><div class="hero__copy"><p class="kicker">Orthopaedic and Spine Surgeon</p><h1>Dr. Aayush Shrestha</h1><p class="hero__lede">MBBS, MS Orthopaedics, Fellowship in Spine Surgery. Practising at Grande International Hospital, Tokha, and Pacific Multispeciality Clinic, Kupondole.</p><div class="hero__actions"><a class="btn btn--primary" href="contact">Book an appointment</a></div></div><figure class="hero__portrait"><ResponsiveImage src={imageAssets.doctorWhiteCoat} sizes="(min-width: 60rem) 38vw, calc(100vw - 2rem)" loading="eager" fetchpriority="high" alt="Dr. Aayush Shrestha in a white medical coat" /><figcaption class="hero__caption">Orthopaedic and spine consultations in Kathmandu and Lalitpur.</figcaption></figure></div></section>
 
-    <section class="credential-strip" aria-label="Professional overview"><ul class="shell"><li><strong>More than 15 years</strong><span>Experience in orthopaedic care</span></li><li><strong>Fellowship in Spine Surgery</strong><span>Grande International Hospital</span></li><li><strong>Endoscopic Spine Surgery</strong><span>Additional focused training</span></li></ul></section>
+    <section class="credential-strip" aria-label="Professional overview"><ul class="shell"><li><strong>More than 15 years</strong><span>Experience in orthopaedic care</span></li><li><strong>Fellowship in Spine Surgery</strong><span>Grande International Hospital</span></li><li><strong>Endoscopic Spine Surgery</strong><span>Additional focused training</span></li><li><a class="credential-strip__rating" href="https://share.google/9Kj5c89U9UB5Ftcmv" target="_blank" rel="noopener"><strong><svg class="credential-strip__star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>4.7 on Google</strong><span>12 patient reviews ↗</span></a></li></ul></section>
 
     <section class="section section--tight section--paper-2"><div class="shell"><div class="section-head section-head--stacked section-head--flush"><h2>Trusted name in orthopaedics</h2><p>Dr. Aayush Shrestha is an orthopaedic surgeon with a fellowship in spine surgery. He has been a practising doctor for more than 15 years and currently practises at Grande International Hospital, Tokha, and Pacific Multispeciality Clinic, Kupondole.</p></div></div></section>
 
