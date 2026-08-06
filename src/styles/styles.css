@@ -143,8 +143,9 @@ html:not(.js) main { padding-block-start: 0; }
   color: var(--color-accent-ink);
 }
 .notice__inner { display: flex; align-items: center; justify-content: space-between; gap: var(--space-sm); }
-.notice p { min-width: 0; overflow: hidden; font-size: var(--text-sm); text-overflow: ellipsis; white-space: nowrap; }
-.notice a { font-weight: 600; white-space: nowrap; }
+.notice p { min-width: 0; display: flex; align-items: baseline; gap: var(--space-sm); font-size: var(--text-sm); }
+.notice p > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.notice a { flex: 0 0 auto; font-weight: 600; white-space: nowrap; }
 .notice__close {
   flex: 0 0 2.75rem;
   width: 2.75rem;
@@ -186,7 +187,7 @@ html:not(.js) main { padding-block-start: 0; }
   cursor: pointer;
 }
 .menu-toggle svg { flex: 0 0 auto; width: 1.125rem; height: 1.125rem; }
-.js .menu-toggle { display: inline-block; }
+.js .menu-toggle { display: inline-flex; }
 .mobile-menu {
   display: block;
   border-block-end: 1px solid var(--color-rule);
