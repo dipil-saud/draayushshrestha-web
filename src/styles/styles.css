@@ -321,10 +321,15 @@ main { padding-block-start: calc(var(--banner-h) + var(--nav-h)); }
 .home-treatments ul { display: grid; gap: var(--rule-width); border: var(--rule-width) solid var(--color-dark-2); background: var(--color-dark-2); }
 .home-treatments li { min-width: 0; padding: var(--space-md); background: var(--color-dark); color: var(--color-rule); }
 .home-treatments .text-link { color: var(--color-focus-on-dark); }
-.quote { display: grid; gap: var(--space-lg); padding-block: var(--space-2xl); }
-.patient-perspective .kicker { font-size: var(--text-label); }
-.quote blockquote { margin: 0; max-width: 34ch; color: var(--color-ink); font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3.25rem); font-style: normal; line-height: 1.15; }
-.quote cite { color: var(--color-muted); font-style: normal; }
+.patient-perspectives .section-head > div { display: grid; gap: var(--space-sm); }
+.testimonial-list { border-block-start: var(--rule-width) solid var(--color-rule); }
+.testimonial { display: grid; gap: var(--space-xl); padding-block: var(--space-xl); border-block-end: var(--rule-width) solid var(--color-rule); }
+.testimonial blockquote { display: grid; gap: var(--space-md); margin: 0; max-width: 72ch; color: var(--color-ink); font-family: var(--font-display); font-size: var(--text-lg); font-style: normal; line-height: 1.35; }
+.testimonial__source { display: grid; align-content: start; gap: var(--space-xs); }
+.testimonial__source cite { color: var(--color-ink); font-style: normal; font-weight: 600; text-transform: none; }
+.testimonial__source a { width: fit-content; color: var(--color-accent-dark); font-size: var(--text-sm); font-weight: 600; }
+.testimonial__rating { display: flex; align-items: center; gap: var(--space-xs); color: var(--color-muted); font-size: var(--text-sm); font-weight: 600; }
+.testimonial__rating svg { width: 1rem; height: 1rem; fill: var(--color-accent); }
 
 .article-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--rule-width); background: var(--color-rule); border: var(--rule-width) solid var(--color-rule); }
 .article-card { display: grid; gap: var(--space-md); min-width: 0; padding: var(--space-lg); background: var(--color-paper); }
@@ -549,6 +554,7 @@ main { padding-block-start: calc(var(--banner-h) + var(--nav-h)); }
   .treatment-index__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .treatment-section__head, .awareness-layout, .treatment-next__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: var(--space-3xl); }
   .article-grid { grid-template-columns: 1.3fr 0.85fr 0.85fr; }
+  .testimonial { grid-template-columns: minmax(0, 1fr) 12rem; gap: var(--space-3xl); }
   .guide-library { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .contact-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .conditions-layout { grid-template-columns: minmax(12rem, 0.35fr) minmax(0, 1.65fr); gap: var(--space-3xl); }
