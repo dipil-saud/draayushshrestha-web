@@ -143,6 +143,7 @@ html:not(.js) main { padding-block-start: 0; }
   color: var(--color-accent-ink);
 }
 .notice__inner { display: flex; align-items: center; justify-content: space-between; gap: var(--space-sm); }
+.notice__list { min-width: 0; display: flex; flex-wrap: wrap; column-gap: var(--space-lg, 1.5rem); row-gap: 0.125rem; }
 .notice p { min-width: 0; display: flex; align-items: baseline; gap: var(--space-sm); font-size: var(--text-sm); }
 .notice p > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .notice a { flex: 0 0 auto; font-weight: 600; white-space: nowrap; }
