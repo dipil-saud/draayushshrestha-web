@@ -93,19 +93,22 @@ const structuredData = [
       <div class="shell">
         <div class="section-head">
           <div><p class="kicker">Google reviews</p><h2>Patient perspectives</h2></div>
-          <p>Six public reviews from patients who shared their experiences on Google. Individual experiences vary and do not guarantee treatment outcomes.</p>
+          <p>Public reviews from real patients, shared on Google.</p>
         </div>
         <div class="testimonial-list">
           {googleReviews.map((review) => (
             <article class="testimonial">
+              <header class="testimonial__head">
+                <span class="testimonial__avatar" aria-hidden="true">{review.name.charAt(0).toUpperCase()}</span>
+                <div>
+                  <cite>{review.name}</cite>
+                  <p class="testimonial__rating" role="img" aria-label={`${review.rating} out of 5 stars`}>{Array.from({ length: 5 }, (_, i) => <svg class={i < review.rating ? "is-filled" : undefined} viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>)}</p>
+                </div>
+              </header>
               <blockquote>
                 {review.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
               </blockquote>
-              <footer class="testimonial__source">
-                <p class="testimonial__rating" aria-label={`${review.rating} out of 5 stars`}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>{review.rating}.0</p>
-                <cite>{review.name}</cite>
-                <a href={review.url} target="_blank" rel="noopener">Read on Google ↗</a>
-              </footer>
+              <a class="testimonial__link" href={review.url} target="_blank" rel="noopener">Read on Google ↗</a>
             </article>
           ))}
         </div>
