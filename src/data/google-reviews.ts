@@ -1,6 +1,6 @@
 export const googleReviewSummary = {
-  rating: "4.8",
-  reviewCount: 23,
+  rating: "4.9",
+  reviewCount: 46,
   profileUrl: "https://www.google.com/maps?cid=15991419127027618675&hl=en&gl=np",
 };
 
